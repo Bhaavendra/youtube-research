@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>NuYouth Content Studio — Silent Video Planner (@Nuyouthishwarisahu)</title>
+  <title>NuYouth Content Studio v2 — Silent Video Planner (@Nuyouthishwarisahu)</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
     :root {
@@ -62,7 +62,7 @@
       <div class="space-y-1">
         <div class="flex flex-wrap items-center gap-2">
           <span class="px-2.5 py-0.5 rounded-full text-xs font-semibold bg-[var(--primary)] text-[var(--primary-foreground)]">
-            NuYouth Studio · No-Talking Format
+            NuYouth Studio Pro · No-Talking Edition
           </span>
           <a href="https://www.youtube.com/@Nuyouthishwarisahu" target="_blank" rel="noopener"
              class="text-xs text-[var(--link)] hover:underline font-medium">
@@ -70,27 +70,26 @@
           </a>
         </div>
         <h1 class="text-xl sm:text-2xl font-bold tracking-tight">
-          Bina Bole Viral Videos Banane ka Complete Planner
+          25+ Ready Silent Shot Guides, 9:16 Safe-Zone Preview &amp; 30-Day Calendar
         </h1>
         <p class="text-xs sm:text-sm text-[var(--muted-foreground)]">
-          Silent videos mein <strong>Camera Angle + Visual Action + On-Screen Text</strong> hi sab kuch hota hai — sab ek jagah ready hai.
+          Har topic ka complete <strong>Camera Angle + Pose Action + Screen Text + 9:16 Phone Preview + Viral Checklist</strong> ek jagah.
         </p>
       </div>
 
       <div class="flex flex-wrap items-center gap-3 shrink-0">
-        <!-- Quick Stats -->
         <div class="grid grid-cols-3 gap-2">
           <div class="bg-[var(--background)] border border-[var(--card-border)] rounded-lg px-3 py-2 text-center">
             <div id="stat-total" class="text-lg font-bold tabular-nums">0</div>
-            <div class="text-xs text-[var(--muted-foreground)]">Ideas</div>
+            <div class="text-xs text-[var(--muted-foreground)]">Topics</div>
           </div>
           <div class="bg-[var(--background)] border border-[var(--card-border)] rounded-lg px-3 py-2 text-center">
             <div id="stat-scripts" class="text-lg font-bold tabular-nums text-[var(--primary)]">0</div>
-            <div class="text-xs text-[var(--muted-foreground)]">Guides</div>
+            <div class="text-xs text-[var(--muted-foreground)]">Shot Guides</div>
           </div>
           <div class="bg-[var(--background)] border border-[var(--card-border)] rounded-lg px-3 py-2 text-center">
             <div id="stat-done" class="text-lg font-bold tabular-nums text-[var(--success)]">0</div>
-            <div class="text-xs text-[var(--muted-foreground)]">Done</div>
+            <div class="text-xs text-[var(--muted-foreground)]">Shot / Done</div>
           </div>
         </div>
         <button onclick="toggleTheme()" id="theme-btn"
@@ -102,13 +101,17 @@
 
     <!-- Navigation Tabs -->
     <nav class="flex flex-wrap items-center gap-2 border-b border-[var(--border)] pb-3">
-      <button onclick="switchTab('ideas')" id="tab-btn-ideas"
+      <button onclick="switchTab('calendar')" id="tab-btn-calendar"
         class="tab-btn px-3.5 py-2 rounded-lg text-xs sm:text-sm font-semibold transition flex items-center gap-1.5 cursor-pointer">
-        <span>💡</span> Idea Bank (25+)
+        <span>📅</span> 30-Day Daily Plan
       </button>
       <button onclick="switchTab('shots')" id="tab-btn-shots"
         class="tab-btn px-3.5 py-2 rounded-lg text-xs sm:text-sm font-semibold transition flex items-center gap-1.5 cursor-pointer">
-        <span>🎥</span> Shot-by-Shot &amp; Text Overlays
+        <span>🎥</span> Shot Guides &amp; 9:16 Preview
+      </button>
+      <button onclick="switchTab('ideas')" id="tab-btn-ideas"
+        class="tab-btn px-3.5 py-2 rounded-lg text-xs sm:text-sm font-semibold transition flex items-center gap-1.5 cursor-pointer">
+        <span>💡</span> All 25+ Topics Bank
       </button>
       <button onclick="switchTab('assets')" id="tab-btn-assets"
         class="tab-btn px-3.5 py-2 rounded-lg text-xs sm:text-sm font-semibold transition flex items-center gap-1.5 cursor-pointer">
@@ -118,41 +121,179 @@
         class="tab-btn px-3.5 py-2 rounded-lg text-xs sm:text-sm font-semibold transition flex items-center gap-1.5 cursor-pointer">
         <span>⚡</span> Visual Hook Builder
       </button>
-      <button onclick="switchTab('calendar')" id="tab-btn-calendar"
-        class="tab-btn px-3.5 py-2 rounded-lg text-xs sm:text-sm font-semibold transition flex items-center gap-1.5 cursor-pointer">
-        <span>📅</span> 7-Day Shoot Plan
-      </button>
     </nav>
 
-    <!-- TAB 1: IDEA BANK -->
-    <section id="tab-ideas" class="space-y-4">
+    <!-- TAB 1: 30-DAY VIRAL SPRINT CALENDAR -->
+    <section id="tab-calendar" class="space-y-4">
+      <div class="bg-[var(--card)] border border-[var(--border)] rounded-xl p-4 sm:p-5 flex flex-col md:flex-row md:items-center justify-between gap-4">
+        <div class="space-y-1">
+          <h2 class="text-base font-bold">30-Day Non-Stop Upload Calendar (Zero Topic Repeat)</h2>
+          <p class="text-xs sm:text-sm text-[var(--muted-foreground)]">
+            Har din ek alag pillar rotate hota hai — kisi bhi din par <strong>"🎥 Shoot This"</strong> dabakar seedhe uska complete Shot Guide kholein.
+          </p>
+        </div>
+        <div class="flex flex-wrap items-center gap-3 shrink-0">
+          <div class="bg-[var(--background)] border border-[var(--border)] rounded-lg px-3 py-1.5 text-xs font-semibold">
+            Progress: <span id="cal-progress" class="text-[var(--success)] tabular-nums">0 / 30</span> Days
+          </div>
+          <button onclick="copy30DayPlan()" class="px-3.5 py-2 rounded-lg text-xs font-semibold bg-[var(--primary)] text-[var(--primary-foreground)] cursor-pointer">
+            📋 Copy 30-Day Plan
+          </button>
+        </div>
+      </div>
+
+      <div id="calendar-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-3"></div>
+    </section>
+
+    <!-- TAB 2: SHOT GUIDES & LIVE 9:16 SAFE-ZONE PREVIEW -->
+    <section id="tab-shots" class="hidden grid grid-cols-1 xl:grid-cols-12 gap-4">
+      <!-- Left: All 25 Shot Guides List -->
+      <div class="xl:col-span-3 bg-[var(--card)] border border-[var(--border)] rounded-xl p-3.5 space-y-2.5 max-h-[820px] flex flex-col">
+        <div class="space-y-2 pb-2 border-b border-[var(--card-border)]">
+          <div class="flex items-center justify-between">
+            <h2 class="text-sm font-bold">All 25 Shot Guides</h2>
+            <span class="text-xs text-[var(--muted-foreground)]" id="shot-count-label">25 guides</span>
+          </div>
+          <input id="shot-search" type="text" oninput="renderShotList()" placeholder="Filter shot guide..."
+            class="w-full bg-[var(--background)] border border-[var(--border)] rounded-lg px-2.5 py-1.5 text-xs text-[var(--foreground)] placeholder-[var(--placeholder)]" />
+        </div>
+        <div id="shot-list" class="space-y-1.5 overflow-y-auto pr-1 flex-1"></div>
+      </div>
+
+      <!-- Middle: Active Visual Shot Breakdown + Checklist -->
+      <div class="xl:col-span-6 space-y-4">
+        <div class="bg-[var(--card)] border border-[var(--border)] rounded-xl p-4 sm:p-5 space-y-4">
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-3 border-b border-[var(--card-border)]">
+            <div>
+              <div class="flex flex-wrap items-center gap-2 mb-1">
+                <span id="active-shot-pillar" class="px-2 py-0.5 rounded text-xs font-semibold bg-[var(--secondary)] text-[var(--secondary-foreground)]"></span>
+                <span id="active-shot-format" class="px-2 py-0.5 rounded text-xs font-medium border border-[var(--border)] text-[var(--muted-foreground)]"></span>
+              </div>
+              <h2 id="active-shot-title" class="text-lg font-bold"></h2>
+              <div id="active-shot-music" class="text-xs text-[var(--primary)] font-medium mt-0.5"></div>
+            </div>
+
+            <!-- Shoot Timer -->
+            <div class="flex items-center gap-1.5 bg-[var(--background)] border border-[var(--border)] rounded-lg px-2.5 py-1.5 shrink-0">
+              <span class="text-xs">⏱️</span>
+              <span id="timer-display" class="font-mono text-sm font-bold tabular-nums w-11 text-center">00:28</span>
+              <button onclick="toggleTimer()" id="timer-btn" class="px-2 py-0.5 rounded text-xs font-semibold bg-[var(--primary)] text-[var(--primary-foreground)] cursor-pointer">Start</button>
+              <button onclick="resetTimer()" class="px-2 py-0.5 rounded text-xs border border-[var(--border)] text-[var(--muted-foreground)] cursor-pointer">Reset</button>
+            </div>
+          </div>
+
+          <div class="flex flex-wrap items-center justify-between gap-2 bg-[var(--background)] border border-[var(--card-border)] rounded-lg px-3 py-2">
+            <span class="text-xs text-[var(--muted-foreground)]">👆 Kisi bhi clip par click karein right side Phone Preview dekhne ke liye</span>
+            <div class="flex flex-wrap gap-2">
+              <button onclick="copyShotSection('all')" class="px-2.5 py-1 rounded text-xs font-semibold bg-[var(--secondary)] text-[var(--secondary-foreground)] cursor-pointer">
+                📋 Copy Guide
+              </button>
+              <button onclick="copyShotSection('meta')" class="px-2.5 py-1 rounded text-xs font-semibold border border-[var(--border)] cursor-pointer">
+                🏷️ Title + Tags
+              </button>
+            </div>
+          </div>
+
+          <!-- Shot Cards -->
+          <div id="shot-cards-box" class="space-y-2.5 max-h-[430px] overflow-y-auto pr-1"></div>
+
+          <!-- SEO Title, Hashtags & Pinned Comment -->
+          <div class="bg-[var(--background)] border border-[var(--card-border)] rounded-xl p-3.5 space-y-2">
+            <div class="flex items-center justify-between">
+              <span class="text-xs font-semibold text-[var(--muted-foreground)]">YouTube Title &amp; Pinned Comment</span>
+              <button onclick="copyShotSection('comment')" class="text-xs text-[var(--link)] hover:underline cursor-pointer">Copy Comment</button>
+            </div>
+            <div id="meta-title" class="text-xs sm:text-sm font-semibold select-all"></div>
+            <div id="meta-tags" class="text-xs text-[var(--link)] select-all"></div>
+            <div class="pt-1.5 border-t border-[var(--card-border)] text-xs text-[var(--foreground)]">
+              <span class="font-semibold text-[var(--primary)]">Pin Comment:</span> <span id="meta-comment" class="select-all"></span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right: Live 9:16 YouTube Shorts Safe-Zone Preview + Viral Checklist -->
+      <div class="xl:col-span-3 space-y-4">
+        <div class="bg-[var(--card)] border border-[var(--border)] rounded-xl p-4 space-y-3">
+          <div class="flex items-center justify-between">
+            <h3 class="text-sm font-bold">📱 9:16 Safe-Zone Preview</h3>
+            <span id="preview-clip-badge" class="text-xs font-semibold text-[var(--primary)]">Hook</span>
+          </div>
+
+          <!-- Phone Frame -->
+          <div class="mx-auto w-full max-w-[230px] aspect-[9/16] rounded-2xl border-4 border-[var(--border)] bg-gradient-to-b from-[#23332C] to-[#141715] text-white relative overflow-hidden p-3 flex flex-col justify-between shadow-md">
+            <!-- Top Safe Zone Text -->
+            <div class="mt-4 mx-auto w-[92%] text-center space-y-1.5 z-10">
+              <div id="preview-screen-text" class="bg-white/95 text-[#141715] rounded-lg px-2.5 py-2 text-xs font-extrabold leading-snug shadow whitespace-pre-line">
+                Fat Belly ❌ vs Posture Belly ✅
+              </div>
+              <div id="preview-camera-note" class="text-[11px] text-emerald-200/90 font-medium">
+                📷 Side angle standing
+              </div>
+            </div>
+
+            <!-- Middle Subject Silhouette Cue -->
+            <div class="my-auto text-center px-2 space-y-1 opacity-90">
+              <div class="text-2xl">🧘‍♀️</div>
+              <p id="preview-action-text" class="text-[11px] text-gray-200 leading-tight line-clamp-2"></p>
+            </div>
+
+            <!-- Right YouTube UI Ghost Icons (Avoid Zone) -->
+            <div class="absolute right-2 bottom-16 flex flex-col items-center gap-2.5 opacity-45 text-[10px]">
+              <div>👍</div>
+              <div>💬</div>
+              <div>↗️</div>
+            </div>
+
+            <!-- Bottom YouTube UI Ghost Title (Avoid Zone) -->
+            <div class="border-t border-white/15 pt-2 pr-7 opacity-60 space-y-1">
+              <div class="flex items-center gap-1.5">
+                <div class="w-4 h-4 rounded-full bg-emerald-400"></div>
+                <span class="text-[10px] font-bold">@Nuyouthishwarisahu</span>
+              </div>
+              <div class="text-[10px] truncate" id="preview-yt-title">Posture Correction #shorts</div>
+            </div>
+          </div>
+
+          <p class="text-xs text-[var(--muted-foreground)] text-center">
+            White box ke andar text rakhein taaki YouTube ke buttons aur title se text na chhupe.
+          </p>
+        </div>
+
+        <!-- Pre-Upload Viral Checklist -->
+        <div class="bg-[var(--card)] border border-[var(--border)] rounded-xl p-4 space-y-2.5">
+          <h3 class="text-sm font-bold">✅ Upload Karne Se Pehle Check</h3>
+          <div id="viral-checklist" class="space-y-2 text-xs"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TAB 3: ALL 25+ TOPICS BANK -->
+    <section id="tab-ideas" class="hidden space-y-4">
       <div class="bg-[var(--card)] border border-[var(--border)] rounded-xl p-4 space-y-3">
         <div class="flex flex-col md:flex-row gap-3">
-          <input id="search-input" type="text" placeholder="Search topic (e.g., PCOD, belly, neck, knee, wall test)..."
+          <input id="search-input" type="text" placeholder="Search topic (e.g., PCOD, belly, neck, knee, sleep, thyroid)..."
             class="flex-1 bg-[var(--background)] border border-[var(--border)] rounded-lg px-3 py-2 text-sm text-[var(--foreground)] placeholder-[var(--placeholder)] focus:outline-none focus:ring-2 focus:ring-[var(--primary)]" />
-          <select id="filter-format"
-            class="bg-[var(--background)] border border-[var(--border)] rounded-lg px-3 py-2 text-xs sm:text-sm text-[var(--foreground)]">
+          <select id="filter-format" class="bg-[var(--background)] border border-[var(--border)] rounded-lg px-3 py-2 text-xs sm:text-sm">
             <option value="all">All Formats</option>
             <option value="Short">Silent Short (15-40s)</option>
             <option value="Long">Silent Follow-Along (8-10m)</option>
             <option value="Live">Live Class Topic</option>
           </select>
-          <select id="filter-status"
-            class="bg-[var(--background)] border border-[var(--border)] rounded-lg px-3 py-2 text-xs sm:text-sm text-[var(--foreground)]">
+          <select id="filter-status" class="bg-[var(--background)] border border-[var(--border)] rounded-lg px-3 py-2 text-xs sm:text-sm">
             <option value="all">All Status</option>
             <option value="To Shoot">To Shoot</option>
             <option value="Shot">Shot</option>
             <option value="Published">Published</option>
           </select>
           <button onclick="toggleAddForm()"
-            class="px-3.5 py-2 rounded-lg text-xs sm:text-sm font-semibold bg-[var(--primary)] text-[var(--primary-foreground)] hover:opacity-90 transition cursor-pointer shrink-0">
+            class="px-3.5 py-2 rounded-lg text-xs sm:text-sm font-semibold bg-[var(--primary)] text-[var(--primary-foreground)] cursor-pointer shrink-0">
             + Apna Idea Add Karein
           </button>
         </div>
 
         <div id="pillar-chips" class="flex flex-wrap gap-2"></div>
 
-        <!-- Add Custom Idea Inline Form -->
         <div id="add-idea-form" class="hidden pt-3 border-t border-[var(--card-border)] grid grid-cols-1 md:grid-cols-4 gap-2.5">
           <input id="new-title" type="text" placeholder="Video Topic / Title..."
             class="md:col-span-2 bg-[var(--background)] border border-[var(--border)] rounded-lg px-3 py-2 text-xs sm:text-sm" />
@@ -179,78 +320,7 @@
       <div id="ideas-grid" class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-3.5"></div>
     </section>
 
-    <!-- TAB 2: SHOT-BY-SHOT & TEXT OVERLAYS -->
-    <section id="tab-shots" class="hidden grid grid-cols-1 lg:grid-cols-12 gap-4">
-      <!-- Shot Guide List Sidebar -->
-      <div class="lg:col-span-4 bg-[var(--card)] border border-[var(--border)] rounded-xl p-3.5 space-y-2.5 max-h-[780px] overflow-y-auto">
-        <div class="flex items-center justify-between px-1 pb-2 border-b border-[var(--card-border)]">
-          <h2 class="text-sm font-bold">Visual Shot Guides (No Talking)</h2>
-          <span class="text-xs text-[var(--muted-foreground)]" id="shot-count-label">8 guides</span>
-        </div>
-        <div id="shot-list" class="space-y-2"></div>
-      </div>
-
-      <!-- Active Visual Shot Breakdown -->
-      <div class="lg:col-span-8 space-y-4">
-        <div class="bg-[var(--card)] border border-[var(--border)] rounded-xl p-4 sm:p-5 space-y-4">
-          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-3 border-b border-[var(--card-border)]">
-            <div>
-              <div class="flex flex-wrap items-center gap-2 mb-1">
-                <span id="active-shot-pillar" class="px-2 py-0.5 rounded text-xs font-semibold bg-[var(--secondary)] text-[var(--secondary-foreground)]"></span>
-                <span id="active-shot-format" class="px-2 py-0.5 rounded text-xs font-medium border border-[var(--border)] text-[var(--muted-foreground)]"></span>
-                <span id="active-shot-music" class="px-2 py-0.5 rounded text-xs font-medium bg-[var(--background)] border border-[var(--card-border)] text-[var(--primary)]"></span>
-              </div>
-              <h2 id="active-shot-title" class="text-lg font-bold"></h2>
-            </div>
-
-            <div class="flex flex-wrap items-center gap-2 shrink-0">
-              <div class="flex items-center gap-1.5 bg-[var(--background)] border border-[var(--border)] rounded-lg px-2.5 py-1.5">
-                <span class="text-xs text-[var(--muted-foreground)]">⏱️</span>
-                <span id="timer-display" class="font-mono text-sm font-bold tabular-nums w-11 text-center">00:30</span>
-                <button onclick="toggleTimer()" id="timer-btn" class="px-2 py-0.5 rounded text-xs font-semibold bg-[var(--primary)] text-[var(--primary-foreground)] cursor-pointer">Start</button>
-                <button onclick="resetTimer()" class="px-2 py-0.5 rounded text-xs border border-[var(--border)] text-[var(--muted-foreground)] cursor-pointer">Reset</button>
-              </div>
-            </div>
-          </div>
-
-          <div class="flex flex-wrap items-center justify-between gap-3 bg-[var(--background)] border border-[var(--card-border)] rounded-lg px-3 py-2">
-            <span class="text-xs text-[var(--muted-foreground)]">
-              💡 Har clip sirf 3–6 sec record karein, music beat par cut karein aur screen text lagayein.
-            </span>
-            <div class="flex flex-wrap gap-2">
-              <button onclick="copyShotSection('all')" class="px-2.5 py-1 rounded text-xs font-semibold bg-[var(--secondary)] text-[var(--secondary-foreground)] hover:opacity-85 cursor-pointer">
-                📋 Copy Shot List + Text
-              </button>
-              <button onclick="copyShotSection('meta')" class="px-2.5 py-1 rounded text-xs font-semibold border border-[var(--border)] hover:bg-[var(--card)] cursor-pointer">
-                🏷️ Copy Title + Tags
-              </button>
-              <button onclick="copyShotSection('comment')" class="px-2.5 py-1 rounded text-xs font-semibold border border-[var(--border)] hover:bg-[var(--card)] cursor-pointer">
-                💬 Copy Pinned Comment
-              </button>
-            </div>
-          </div>
-
-          <div id="shot-cards-box" class="space-y-3 max-h-[460px] overflow-y-auto pr-1"></div>
-
-          <div class="bg-[var(--background)] border border-[var(--card-border)] rounded-xl p-3.5 space-y-2.5">
-            <div>
-              <div class="text-xs font-semibold text-[var(--muted-foreground)] mb-0.5">YouTube Title</div>
-              <div id="meta-title" class="text-xs sm:text-sm font-medium select-all"></div>
-            </div>
-            <div>
-              <div class="text-xs font-semibold text-[var(--muted-foreground)] mb-0.5">Hashtags</div>
-              <div id="meta-tags" class="text-xs text-[var(--link)] select-all"></div>
-            </div>
-            <div>
-              <div class="text-xs font-semibold text-[var(--muted-foreground)] mb-0.5">Pinned Comment (Bina bole engagement laane ke liye)</div>
-              <div id="meta-comment" class="text-xs sm:text-sm text-[var(--foreground)] select-all"></div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- TAB 3: READY PICTURES & THUMBNAILS -->
+    <!-- TAB 4: READY PICTURES & THUMBNAILS -->
     <section id="tab-assets" class="hidden space-y-4">
       <div class="bg-[var(--card)] border border-[var(--border)] rounded-xl p-4 sm:p-5">
         <h2 class="text-base font-bold">Ready-to-Use Pictures &amp; Thumbnails</h2>
@@ -301,7 +371,7 @@
       </div>
     </section>
 
-    <!-- TAB 4: VISUAL HOOK & TEXT BUILDER -->
+    <!-- TAB 5: VISUAL HOOK BUILDER -->
     <section id="tab-hooks" class="hidden grid grid-cols-1 lg:grid-cols-12 gap-4">
       <div class="lg:col-span-5 bg-[var(--card)] border border-[var(--border)] rounded-xl p-4 sm:p-5 space-y-4">
         <div>
@@ -339,13 +409,6 @@
               <option value="hindi">Simple Hindi (Devanagari)</option>
             </select>
           </div>
-
-          <div class="bg-[var(--background)] border border-[var(--card-border)] rounded-lg p-3 space-y-1.5 text-xs text-[var(--muted-foreground)]">
-            <div class="font-bold text-[var(--foreground)]">🎬 Silent Shorts Pro Tips:</div>
-            <p>• Pehle 2 sec mein <strong>❌ Galat vs ✅ Sahi</strong> dikhane se views double hote hain.</p>
-            <p>• Screen text ko <strong>top-center</strong> mein rakhein taaki YouTube UI title se na dhake.</p>
-            <p>• Har exercise ke upar <strong>Timer / Reps badge</strong> (`30 Sec`, `15 Reps`) zaroor lagayein.</p>
-          </div>
         </div>
       </div>
 
@@ -356,23 +419,6 @@
         </div>
         <div id="hooks-output" class="space-y-3"></div>
       </div>
-    </section>
-
-    <!-- TAB 5: 7-DAY SHOOT PLAN -->
-    <section id="tab-calendar" class="hidden space-y-4">
-      <div class="bg-[var(--card)] border border-[var(--border)] rounded-xl p-4 sm:p-5 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
-        <div>
-          <h2 class="text-base font-bold">Weekly Balanced Upload Blueprint (Silent + Music Format)</h2>
-          <p class="text-xs text-[var(--muted-foreground)] mt-0.5">
-            Ek Sunday ko 1 ghante mein poore hafte ke 5 silent Shorts shoot ho sakte hain — bas music &amp; text overlay daalna hoga!
-          </p>
-        </div>
-        <button onclick="copyWeeklyPlan()" class="px-3.5 py-2 rounded-lg text-xs font-semibold bg-[var(--primary)] text-[var(--primary-foreground)] cursor-pointer shrink-0">
-          📋 Copy Full Week Plan
-        </button>
-      </div>
-
-      <div id="calendar-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3.5"></div>
     </section>
 
   </div>
@@ -392,406 +438,385 @@
       { id: 'Face & Glow', label: 'Face Yoga & Feel Younger' }
     ];
 
-    const DEFAULT_IDEAS = [
-      { id: 'p1', title: 'Fat Belly vs Posture Belly (10-Sec Wall Test)', pillar: 'Posture', format: 'Short', hook: 'Visual: Side profile mein pet dikha kar deewar ke paas khade hona + ❌ vs ✅ text', why: '469K Pelvic Tilt hit ka silent visual comparison version', shotId: 's1' },
-      { id: 'p2', title: 'Rounded Shoulders & Desk-Job 2-Min Fix', pillar: 'Posture', format: 'Short', hook: 'Visual: Hunched posture ❌ se seedhe open chest ✅ transition', why: 'Bina bole clearly samajh aane wala office stretch', shotId: 's2' },
-      { id: 'p3', title: 'Dowager’s Hump (Gardan ke Peeche ki Gaanth)', pillar: 'Posture', format: 'Short', hook: 'Visual: Side angle se neck hump par circle/arrow lagana + 3 wall fixes', why: 'Neck Hump (23K) ka specific targeted variation', shotId: null },
-      { id: 'p4', title: 'Uneven Shoulders & One-Hip Higher Check', pillar: 'Posture', format: 'Short', hook: 'Visual: Back view se ek shoulder neeche ❌ -> level shoulders ✅', why: 'Mirror test hook — high shares & comments', shotId: null },
-      { id: 'p5', title: '10-Min Silent Follow-Along Posture Reset (Music + Timer)', pillar: 'Posture', format: 'Long', hook: 'Visual: Screen par 45s exercise timer + next-pose preview box', why: 'Bina bole long video banane ka best format (calm music + timer)', shotId: 's8' },
-
-      { id: 'g1', title: 'Warm Water in Malasana + 3 Digestion Poses', pillar: 'Gut Health', format: 'Short', hook: 'Visual: Malasana mein warm water peena + 3 gut-twist clips', why: 'Digestion Short par 1 din mein 37K views aaye hain', shotId: 's3' },
-      { id: 'g2', title: '3 Types of Belly: Bloating vs Stress vs Pelvic Tilt', pillar: 'Gut Health', format: 'Short', hook: 'Visual: 3 side-pose angles + 3 short labels (Gas / Cortisol / Tilt)', why: 'High save rate without needing any voice', shotId: null },
-      { id: 'g3', title: 'After-Dinner 5-Min Vajrasana + Wall Legs Up', pillar: 'Gut Health', format: 'Short', hook: 'Visual: Khane ke baad letna ❌ vs Vajrasana ✅', why: 'Relatable family health habit', shotId: null },
-      { id: 'g4', title: 'Acidity & Gas Instant Relief — 3 Mat Poses', pillar: 'Gut Health', format: 'Short', hook: 'Visual: Pet pakad kar discomfort ❌ -> Pawanmuktasana relief ✅', why: 'Evergreen Indian search topic', shotId: null },
-      { id: 'g5', title: 'Morning Gut & Liver Detox 8-Min Silent Flow', pillar: 'Gut Health', format: 'Long', hook: 'Visual: Timer bar + pose name + breathing cue (Inhale/Exhale)', why: 'Short-to-Long funnel for Digestion viewers', shotId: null },
-
-      { id: 'w1', title: 'PCOD / Irregular Periods — 3 Hormone-Balancing Poses', pillar: "Women's Health", format: 'Short', hook: 'Visual: Butterfly + Chakki Chalan + Reclined Butterfly with rep badges', why: 'Women’s Health Short (17K) + high demand niche', shotId: 's4' },
-      { id: 'w2', title: 'Post-Pregnancy Belly Pooch (No Crunches!)', pillar: "Women's Health", format: 'Short', hook: 'Visual: Crunches ❌ (red cross) -> Pelvic Tilt & Heel Slides ✅', why: 'Visual ❌ vs ✅ works fast in silent reels', shotId: 's5' },
-      { id: 'w3', title: '35+ Women: Joint Mobility & Hormone Reset', pillar: "Women's Health", format: 'Short', hook: 'Visual: Slow gentle standing-to-mat flow (zero jumping)', why: '35-50 female audience loves low-impact visuals', shotId: null },
-      { id: 'w4', title: 'Thyroid Fatigue — 3 Throat & Neck Opening Poses', pillar: "Women's Health", format: 'Short', hook: 'Visual: Fish Pose (Matsyasana) + Camel/Cobra + Shoulder Bridge', why: 'Huge search volume in India', shotId: null },
-      { id: 'w5', title: 'Period Cramps Relief — 2-Min Bed Yoga', pillar: "Women's Health", format: 'Short', hook: 'Visual: Bed par blanket/pillow ke saath 2 soothing poses', why: 'Very high bookmark/save rate', shotId: null },
-      { id: 'w6', title: 'Morning / Evening Live Yoga Demo Class', pillar: "Women's Health", format: 'Live', hook: 'Visual: Follow-along music + hand gestures + timer on screen', why: 'Shorts audience ko nuyouth.in live classes mein laane ke liye', shotId: null },
-
-      { id: 'd1', title: 'Ghutno ka Dard (Knee Pain) — Chair-Assisted Safe Yoga', pillar: 'Daily Pain', format: 'Short', hook: 'Visual: Deep squats ❌ -> Chair + Rolled Towel Press ✅', why: 'Parents/40+ audience ke liye super clear visual demo', shotId: 's6' },
-      { id: 'd2', title: 'Kitchen Standing Heel & Leg Pain (Varicose / Calf)', pillar: 'Daily Pain', format: 'Short', hook: 'Visual: Wall calf stretch + Viparita Karani (Legs up the wall)', why: 'Homemakers ke liye hyper-relatable', shotId: null },
-      { id: 'd3', title: 'Sciatica / Lower Back Nerve Relief — 2 Safe Stretches', pillar: 'Daily Pain', format: 'Short', hook: 'Visual: Figure-4 stretch + gentle Cobra', why: 'Back Pain (4.4M) audience ka next logical topic', shotId: null },
-      { id: 'd4', title: 'Subah Uthne par Body Stiff? 3-Min Bed Stretch', pillar: 'Daily Pain', format: 'Short', hook: 'Visual: Bed par uthte hi Cat-Cow + Knee-to-Chest + Twist', why: 'Zero equipment, easy morning shoot', shotId: null },
-      { id: 'd5', title: 'Sote Waqt Kamar Dard? Sahi Pillow Position', pillar: 'Daily Pain', format: 'Short', hook: 'Visual: Stomach sleeping ❌ vs Side sleeping with pillow between knees ✅', why: 'Instant visual aha! moment without speaking', shotId: null },
-
-      { id: 'f1', title: 'Double Chin & Jawline Tightening (3 Face Yoga Moves)', pillar: 'Face & Glow', format: 'Short', hook: 'Visual: Close-up side profile + 3 easy face moves with arrow overlays', why: 'Channel tagline "Feel Younger" se direct match', shotId: 's7' },
-      { id: 'f2', title: 'Subah Puffy Face & Dark Circles — 2-Min Lymphatic Sweep', pillar: 'Face & Glow', format: 'Short', hook: 'Visual: Finger movement arrows on cheeks, jawline & collarbones', why: 'Visual arrows make it effortless to follow silently', shotId: null },
-      { id: 'f3', title: 'Hair Fall Control: Balayam + Inverted Flow + Scalp Tap', pillar: 'Face & Glow', format: 'Short', hook: 'Visual: Nail rubbing (Balayam) + Downward Dog + Scalp massage', why: 'Pair with calming flute/instrumental track', shotId: null },
-      { id: 'f4', title: 'Night Stress Release & Deep Sleep (8-Min Silent Guided)', pillar: 'Face & Glow', format: 'Long', hook: 'Visual: Warm lamp lighting + 4-7-8 breathing visual circle + slow stretches', why: 'Public relaxing bedtime video for Videos tab', shotId: null }
-    ];
-
-    const SHOTS = [
+    // All 25 topics with 1-to-1 complete silent Shot Guides!
+    const TOPICS_DATA = [
       {
-        id: 's1',
-        title: 'Fat Belly vs Posture Belly (10-Sec Wall Test)',
-        pillar: 'Posture',
-        format: 'Short (25–30 sec)',
-        durationSec: 30,
-        musicVibe: '🎵 Upbeat Fitness / Beat-Drop Track',
+        id: 'p1', title: 'Fat Belly vs Posture Belly (10-Sec Wall Test)', pillar: 'Posture', format: 'Short', durationSec: 30,
+        hook: 'Visual: Side profile mein pet dikha kar deewar ke paas khade hona + ❌ vs ✅',
+        why: '469K Pelvic Tilt hit ka silent visual comparison version',
+        music: '🎵 Upbeat Fitness Beat (120 BPM)',
+        tags: '#AnteriorPelvicTilt #LowerBellyPooch #PostureCorrection #BellyFatLoss #Nuyouth #trending',
+        comment: 'Wall test par kamar ke peeche kitna gap aaya? 1️⃣ Kam 2️⃣ Poori mutthi jitna 😅 Batayein!',
         steps: [
-          {
-            time: '0:00 – 0:04',
-            shotName: 'HOOK SHOT (Side Profile Standing)',
-            camera: 'Side angle (poori body dikhe, fitted top pehnein taaki posture clear dikhe)',
-            action: 'Pehle pet ko aage tilt karke dikhayein (❌), phir deewar ke paas aakar lower back gap mein apni mutthi (fist) daal kar dikhayein!',
-            onScreenText: 'Fat Belly ❌ vs Posture Belly ✅\n10-Sec Wall Test 👇'
-          },
-          {
-            time: '0:04 – 0:11',
-            shotName: 'CLIP 1 — Hip Flexor Stretch (Kneeling Lunge)',
-            camera: 'Side mat angle',
-            action: 'Ek ghutna mat par, doosra aage 90° par. Hips ko aage press karein. Haath se tight hip area par tap/point karein.',
-            onScreenText: '1. Hip Flexor Stretch\n30 Sec Each Side'
-          },
-          {
-            time: '0:11 – 0:18',
-            shotName: 'CLIP 2 — Glute Bridge (With Pelvic Tuck)',
-            camera: 'Side mat angle',
-            action: 'Pehle lower back mat se chipkayein (arrow upar/andar dikhayein), phir hips lift karein.',
-            onScreenText: '2. Glute Bridge\n15 Reps x 2 Sets'
-          },
-          {
-            time: '0:18 – 0:25',
-            shotName: 'CLIP 3 — Dead Bug Hold',
-            camera: 'Side mat angle',
-            action: 'Peeth zameen par lock rakhein (no gap!) aur ek-ek pair dheere neeche laayein.',
-            onScreenText: '3. Dead Bug (No Back Gap!)\n10 Reps Each Side'
-          },
-          {
-            time: '0:25 – 0:30',
-            shotName: 'OUTRO — Before vs After Posture + CTA',
-            camera: 'Side profile smiling',
-            action: 'Slouched ❌ se straight core-engaged posture ✅ mein khade hon aur neeche comment ki taraf point karein.',
-            onScreenText: 'Do Daily for 14 Days 💪\nComment "POSTURE" for Part 2'
-          }
-        ],
-        seoTitle: 'Fat Belly vs Posture Belly? 😳 10-Second Wall Test & 3 Fixes | Anterior Pelvic Tilt #shorts',
-        tags: '#AnteriorPelvicTilt #LowerBellyPooch #PostureCorrection #BellyFatLoss #YogaForBeginners #Nuyouth #trending #viral',
-        pinnedComment: 'Wall test karne par aapki kamar ke peeche kitna gap aaya? 1️⃣ Bahut kam 2️⃣ Poori mutthi jitna 😅 Comment mein batayein!'
+          { time: '0:00–0:04', name: 'HOOK (Wall Test)', cam: 'Side profile at wall', act: 'Arched back ke peeche gap mein mutthi daal kar dikhayein (❌), phir neutral posture (✅).', text: 'Fat Belly ❌ vs Posture Belly ✅\n10-Sec Wall Test 👇' },
+          { time: '0:04–0:11', name: 'CLIP 1 — Hip Flexor Stretch', cam: 'Side mat angle', act: 'Kneeling lunge mein hips aage press karein; tight hip par haath se tap karein.', text: '1. Hip Flexor Stretch\n30 Sec Each Side' },
+          { time: '0:11–0:18', name: 'CLIP 2 — Glute Bridge', cam: 'Side mat angle', act: 'Pehle lower back mat se chipkayein, phir hips lift karein.', text: '2. Glute Bridge (Pelvic Tuck)\n15 Reps x 2' },
+          { time: '0:18–0:25', name: 'CLIP 3 — Dead Bug', cam: 'Side mat angle', act: 'Kamar lock rakh kar ek-ek pair dheere neeche laayein.', text: '3. Dead Bug (No Back Gap!)\n10 Reps Each Side' },
+          { time: '0:25–0:30', name: 'OUTRO — CTA', cam: 'Side profile smiling', act: 'Tall aligned posture mein khade होकर neeche comment ki taraf point karein.', text: 'Do Daily 14 Days 💪\nComment "POSTURE"' }
+        ]
       },
       {
-        id: 's2',
-        title: 'Rounded Shoulders & Desk-Job 2-Min Fix',
-        pillar: 'Posture',
-        format: 'Short (22–28 sec)',
-        durationSec: 25,
-        musicVibe: '🎵 Clean Lo-Fi / Aesthetic Beat',
+        id: 'p2', title: 'Rounded Shoulders & Desk-Job 2-Min Fix', pillar: 'Posture', format: 'Short', durationSec: 25,
+        hook: 'Visual: Hunched laptop pose ❌ se seedhe open chest ✅ transition',
+        why: 'WFH / office & students ke liye high-share silent routine',
+        music: '🎵 Clean Lo-Fi Aesthetic Beat',
+        tags: '#RoundedShoulders #PostureCorrection #DeskYoga #UpperBackPain #Nuyouth #shorts',
+        comment: 'Din mein kitne ghante laptop/phone use karte hain? Comment mein likhein 💻',
         steps: [
-          {
-            time: '0:00 – 0:04',
-            shotName: 'HOOK SHOT — Slouched vs Open Posture',
-            camera: 'Side-front 45° angle',
-            action: 'Laptop/phone pakad kar aage jhukne ka pose banayein (❌), phir sir hila kar seedhe khade hon (✅).',
-            onScreenText: 'Rounded Shoulders? ❌\n2-Min Desk Fix ✅'
-          },
-          {
-            time: '0:04 – 0:11',
-            shotName: 'CLIP 1 — Wall Chest Opener',
-            camera: 'Back/Side angle near wall',
-            action: 'Deewar par haath rakh kar chest ko bahar ki taraf rotate karein.',
-            onScreenText: '1. Wall Chest Stretch\n30 Sec Each Side'
-          },
-          {
-            time: '0:11 – 0:18',
-            shotName: 'CLIP 2 — Wall Angels',
-            camera: 'Front-side angle against wall',
-            action: 'Deewar se peeth aur haath chipka kar arms ko upar-neeche slide karein.',
-            onScreenText: '2. Wall Angels\n12 Slow Reps'
-          },
-          {
-            time: '0:18 – 0:25',
-            shotName: 'CLIP 3 — Behind-Back Clasp + Smile',
-            camera: 'Side angle',
-            action: 'Peeche dono haath lock karke chest lift karein aur thumbs-up dikhayein.',
-            onScreenText: '3. Chest Lift Hold (20 Sec)\nSave & Share 📌'
-          }
-        ],
-        seoTitle: 'Fix Rounded Shoulders in 2 Minutes 💻 Desk Job & Mobile Posture Correction #shorts',
-        tags: '#RoundedShoulders #PostureCorrection #DeskYoga #NeckPainRelief #UpperBackPain #Nuyouth #YogaShorts #trending',
-        pinnedComment: 'Din mein kitne ghante mobile/laptop use karte hain? Comment mein likhein aur roz ye 2 min stretch karein 💻'
+          { time: '0:00–0:04', name: 'HOOK (Desk Posture)', cam: 'Side-front 45° angle', act: 'Phone dekhte hue kandhe aage jhukayein (❌) -> seedhe open chest (✅).', text: 'Rounded Shoulders? ❌\n2-Min Desk Fix ✅' },
+          { time: '0:04–0:11', name: 'CLIP 1 — Wall Chest Opener', cam: 'Wall side angle', act: 'Deewar par haath rakh kar chest ko bahar ghumayein.', text: '1. Wall Chest Stretch\n30 Sec Each Side' },
+          { time: '0:11–0:18', name: 'CLIP 2 — Wall Angels', cam: 'Front-side at wall', act: 'Deewar se peeth aur haath chipka kar arms upar-neeche slide karein.', text: '2. Wall Angels\n12 Slow Reps' },
+          { time: '0:18–0:25', name: 'CLIP 3 — Behind-Back Clasp', cam: 'Side profile', act: 'Peeche dono haath lock karke chest lift karein + smile.', text: '3. Chest Lift Hold (20s)\nSave & Share 📌' }
+        ]
       },
       {
-        id: 's3',
-        title: 'Warm Water in Malasana + 3 Digestion Poses',
-        pillar: 'Gut Health',
-        format: 'Short (25–30 sec)',
-        durationSec: 28,
-        musicVibe: '🎵 Fresh Morning Acoustic / Flute Beat',
+        id: 'p3', title: 'Dowager’s Hump (Gardan ke Peeche Ubhar)', pillar: 'Posture', format: 'Short', durationSec: 25,
+        hook: 'Visual: Side angle se neck hump par tap/circle + 3 fixes',
+        why: 'Neck Hump (23K) ka specific targeted variation',
+        music: '🎵 Calm Focus Instrumental',
+        tags: '#NeckHump #DowagersHump #ForwardHead #PostureCorrection #Nuyouth #shorts',
+        comment: 'Kya aapki gardan ke peeche bhi ubhar ya stiffness rehti hai? "YES" likhein 👇',
         steps: [
-          {
-            time: '0:00 – 0:05',
-            shotName: 'HOOK SHOT — Warm Water in Malasana',
-            camera: 'Front-angle mat shot (subah ki natural light mein)',
-            action: 'Malasana (squat) mein baith kar gun-guna paani sip karein aur pet ki taraf smile ke saath point karein.',
-            onScreenText: 'Subah Pet Saaf Nahi Hota? 🌿\n3-Step Morning Routine'
-          },
-          {
-            time: '0:05 – 0:12',
-            shotName: 'CLIP 1 — Tiryaka Tadasana (Side Bends)',
-            camera: 'Front full-body shot',
-            action: 'Haath upar lock karke left aur right bend karein.',
-            onScreenText: '1. Side Bend Stretch\n10 Reps Each Side'
-          },
-          {
-            time: '0:12 – 0:20',
-            shotName: 'CLIP 2 — Pawanmuktasana (Knee to Chest)',
-            camera: 'Side mat angle',
-            action: 'Mat par let kar dono ghutne seene se lagayein aur halka rock karein.',
-            onScreenText: '2. Pawanmuktasana\n30 Sec Hold (Gas Relief)'
-          },
-          {
-            time: '0:20 – 0:28',
-            shotName: 'CLIP 3 — Supine Spinal Twist',
-            camera: 'Top-side angle',
-            action: 'Ghutno ko ek taraf drop karein aur gardan doosri taraf ghumayein.',
-            onScreenText: '3. Spinal Twist (20 Sec)\nTry Tomorrow Morning 🌅'
-          }
-        ],
-        seoTitle: 'Improve Digestion Naturally 🌿 Warm Water & 3 Morning Yoga Steps for Kabz & Gas #shorts',
-        tags: '#Digestion #GutHealth #ConstipationRelief #Bloating #MorningYoga #WarmWater #Nuyouth #HealthyIndia #trending',
-        pinnedComment: 'Subah uthne ke baad aap sabse pehle kya peete hain — Paani ya Chai? 👇'
+          { time: '0:00–0:04', name: 'HOOK (Neck Profile)', cam: 'Close side profile', act: 'Gardan ke peeche ubhar par haath rakh kar point karein (❌).', text: 'Gardan ke Peeche Ubhar? 👀\n3 Simple Fixes' },
+          { time: '0:04–0:11', name: 'CLIP 1 — Wall Chin Tucks', cam: 'Side against wall', act: 'Sir aur peeth deewar se laga kar chin ko peeche tuck karein.', text: '1. Wall Chin Tucks\n15 Slow Reps' },
+          { time: '0:11–0:18', name: 'CLIP 2 — Prone Cobra (Bhujangasana)', cam: 'Side mat angle', act: 'Pet ke bal let kar chest halka uthayein, elbows peeche.', text: '2. Baby Cobra Hold\n30 Sec x 2' },
+          { time: '0:18–0:25', name: 'CLIP 3 — Thoracic Chair Extension', cam: 'Side chair angle', act: 'Chair backrest par upper back rakh kar peeche gentle stretch lein.', text: '3. Upper Back Stretch\nDo Daily 2 Mins ✅' }
+        ]
       },
       {
-        id: 's4',
-        title: 'PCOD / Irregular Periods — 3 Hormone-Balancing Poses',
-        pillar: "Women's Health",
-        format: 'Short (25–30 sec)',
-        durationSec: 28,
-        musicVibe: '🎵 Soft Aesthetic / Calm Wellness Track',
+        id: 'p4', title: 'Uneven Shoulders & One-Hip Higher Check', pillar: 'Posture', format: 'Short', durationSec: 25,
+        hook: 'Visual: Back view se ek shoulder neeche ❌ -> level shoulders ✅',
+        why: 'Mirror test hook — high comments & saves',
+        music: '🎵 Clean Pop Beat',
+        tags: '#UnevenShoulders #BodyAlignment #PostureCheck #ScoliosisStretch #Nuyouth',
+        comment: 'Mirror mein check kiya? Aapka left shoulder neeche hai ya right? Batayein 👇',
         steps: [
-          {
-            time: '0:00 – 0:04',
-            shotName: 'HOOK SHOT — Calm Seated Intro',
-            camera: 'Front medium shot on mat',
-            action: 'Haath dil aur lower belly par rakh kar smile karein, phir 3 fingers dikhayein.',
-            onScreenText: 'PCOD / Irregular Periods? 🌸\nDo These 3 Poses Daily'
-          },
-          {
-            time: '0:04 – 0:12',
-            shotName: 'CLIP 1 — Baddha Konasana (Butterfly)',
-            camera: 'Front mat shot',
-            action: 'Pairon ke talve mila kar smooth butterfly flaps karein.',
-            onScreenText: '1. Butterfly Pose\n1–2 Minutes Daily'
-          },
-          {
-            time: '0:12 – 0:20',
-            shotName: 'CLIP 2 — Chakki Chalanasana',
-            camera: '45° front-side angle',
-            action: 'Pair khol kar dono haath jod kar bada circle banayein (clockwise + anti-clockwise).',
-            onScreenText: '2. Chakki Chalan\n10+10 Slow Circles'
-          },
-          {
-            time: '0:20 – 0:28',
-            shotName: 'CLIP 3 — Supta Baddha Konasana',
-            camera: 'Side mat angle',
-            action: 'Butterfly legs ke saath peeth par let kar ek haath pet par rakhein (deep breathing dikhayein).',
-            onScreenText: '3. Reclined Butterfly (1 Min)\nSave & Share ❤️'
-          }
-        ],
-        seoTitle: 'PCOD & Irregular Periods Solution 🌸 3 Best Yoga Poses for Hormonal Balance #shorts',
-        tags: '#PCOS #PCOD #WomensHealth #IrregularPeriods #HormoneBalance #ButterflyPose #Nuyouth #YogaForWomen',
-        pinnedComment: 'Kya aapko PCOS/PCOD par full 10-min silent follow-along video chahiye? Comment mein "🌸" bhejein!'
+          { time: '0:00–0:05', name: 'HOOK (Mirror Check)', cam: 'Back/front straight camera', act: 'Ek kandha halka neeche tilt dikha kar line graphic lagayein (❌) -> level ✅.', text: 'Ek Kandha Neeche Hai? 🤔\nFix Imbalance Daily' },
+          { time: '0:05–0:12', name: 'CLIP 1 — Side Rib Stretch', cam: 'Front standing', act: 'Ek haath upar utha kar opposite side mein slow stretch karein.', text: '1. Side Body Stretch\n30 Sec Tight Side' },
+          { time: '0:12–0:19', name: 'CLIP 2 — Thread the Needle', cam: 'Side mat angle', act: 'Tabletop mein ek haath doosre ke neeche se slide karein.', text: '2. Thread the Needle\n10 Reps Each Side' },
+          { time: '0:19–0:25', name: 'CLIP 3 — Hanging / Wall Reach', cam: 'Front wall shot', act: 'Dono haath deewar par barabar upar stretch karke spine lambi karein.', text: '3. Symmetric Wall Reach\nSave This Routine 📌' }
+        ]
       },
       {
-        id: 's5',
-        title: 'Post-Pregnancy Belly Pooch (No Crunches!)',
-        pillar: "Women's Health",
-        format: 'Short (25 sec)',
-        durationSec: 25,
-        musicVibe: '🎵 Gentle Inspiring Instrumental',
+        id: 'p5', title: '10-Min Silent Follow-Along Posture Reset', pillar: 'Posture', format: 'Long', durationSec: 60,
+        hook: 'Visual: Screen par 45s exercise timer + next-pose preview box',
+        why: 'Videos tab (abhi sirf 2 videos) grow karne ka best silent format',
+        music: '🎵 10-Min Calm Instrumental Flow',
+        tags: '#PostureCorrection #FollowAlongYoga #NoTalkingYoga #Nuyouth #BackPainRelief',
+        comment: 'Kya aapko bina talking wala Timer + Music video pasand aaya? "DAY 1 DONE ✅" likhein!',
         steps: [
-          {
-            time: '0:00 – 0:05',
-            shotName: 'HOOK SHOT — Stop Crunches!',
-            camera: 'Side mat shot',
-            action: '2 crunches karke camera ki taraf dekhein aur ungli se "NO ❌" gesture karein.',
-            onScreenText: 'Post-Pregnancy Belly? ⚠️\nStop Doing Crunches! ❌'
-          },
-          {
-            time: '0:05 – 0:12',
-            shotName: 'CLIP 1 — Deep Belly Breath + Pelvic Tuck',
-            camera: 'Close side angle on mat',
-            action: 'Haath pet par rakh kar exhale ke saath pet andar aur kamar mat se chipkate hue dikhayein.',
-            onScreenText: '1. Exhale & Pull Navel In ✅\n12 Slow Reps'
-          },
-          {
-            time: '0:12 – 0:19',
-            shotName: 'CLIP 2 — Gentle Heel Slides',
-            camera: 'Side mat shot',
-            action: 'Core tight rakh kar ek-ek pair ki edi mat par dheere slide karein.',
-            onScreenText: '2. Heel Slides ✅\n10 Reps Each Leg'
-          },
-          {
-            time: '0:19 – 0:25',
-            shotName: 'CLIP 3 — Glute Bridge Hold',
-            camera: 'Side mat shot',
-            action: 'Slow bridge lift + thumbs up.',
-            onScreenText: '3. Pelvic Bridge (12 Reps)\n*Ask Doctor After C-Section'
-          }
-        ],
-        seoTitle: 'Post-Pregnancy Belly Pooch Fix ⚠️ Avoid Crunches! Safe Core Healing Exercises #shorts',
-        tags: '#PostPregnancyBelly #DiastasisRecti #MomFitness #PelvicFloor #WomensHealth #Nuyouth #SafeCoreWorkout',
-        pinnedComment: 'Ye safe exercises save kar lein 📌 Agar aapko post-delivery routine chahiye toh "MOM" comment karein ❤️'
+          { time: '0:00–0:20', name: 'INTRO + WALL TEST', cam: 'Wide mat + wall shot', act: 'Bina bole wall test dikhayein aur clean title card lagayein.', text: '10-Min Posture & Belly Reset\nNo Talking · Follow Along 🧘‍♀️' },
+          { time: '0:20–2:30', name: 'BLOCK 1 — Spine Warm-Up', cam: 'Side mat wide shot', act: 'Cat-Cow (45s), Thread the Needle (45s), Child Pose (30s).', text: 'Corner Timer: 45s Work / 15s Rest' },
+          { time: '2:30–5:30', name: 'BLOCK 2 — Neck & Chest', cam: 'Side + Front angles', act: 'Chin Tucks, Cobra, Wall Angels slow guided reps.', text: 'Keep Shoulders Away From Ears' },
+          { time: '5:30–8:30', name: 'BLOCK 3 — Pelvic Tilt & Core', cam: 'Side mat angle', act: 'Hip Flexor Lunge, Glute Bridge, Dead Bug.', text: 'Keep Lower Back Pressed to Mat ✅' },
+          { time: '8:30–10:00', name: 'COOL DOWN + LIVE INVITE', cam: 'Wide relaxing shot', act: 'Child Pose + Namaste smile.', text: 'Daily LIVE: 7 AM & 8 PM 🌅\nSubscribe @Nuyouth' }
+        ]
       },
       {
-        id: 's6',
-        title: 'Ghutno ka Dard (Knee Pain) — Chair-Assisted Safe Yoga',
-        pillar: 'Daily Pain',
-        format: 'Short (25 sec)',
-        durationSec: 25,
-        musicVibe: '🎵 Soft Uplifting Acoustic',
+        id: 'g1', title: 'Warm Water in Malasana + 3 Digestion Poses', pillar: 'Gut Health', format: 'Short', durationSec: 28,
+        hook: 'Visual: Malasana mein warm water sip + 3 gut-twist clips',
+        why: 'Digestion Short par 1 din mein 37K views aaye hain',
+        music: '🎵 Fresh Morning Flute / Acoustic',
+        tags: '#Digestion #GutHealth #ConstipationRelief #MorningYoga #WarmWater #Nuyouth',
+        comment: 'Subah uthne ke baad aap pehle kya peete hain — Paani ya Chai? 👇',
         steps: [
-          {
-            time: '0:00 – 0:04',
-            shotName: 'HOOK SHOT — Squats NO, Chair YES',
-            camera: 'Side-front angle',
-            action: 'Squat karne ki koshish mein ghutna pakad kar ❌ gesture karein, phir kursi par baith jayein ✅.',
-            onScreenText: 'Ghutno Mein Dard? 🦵\nNo Squats ❌ Try Chair Yoga ✅'
-          },
-          {
-            time: '0:04 – 0:11',
-            shotName: 'CLIP 1 — Rolled Towel Knee Press',
-            camera: 'Side mat/bed angle (close-up on knee)',
-            action: 'Ghutne ke neeche towel roll rakh kar neeche press karein.',
-            onScreenText: '1. Towel Knee Press\n10 Sec Hold x 10'
-          },
-          {
-            time: '0:11 – 0:18',
-            shotName: 'CLIP 2 — Seated Leg Extension',
-            camera: 'Side chair angle',
-            action: 'Chair par seedhe baith kar ek pair seedha uthayein aur toes apni taraf kheechein.',
-            onScreenText: '2. Chair Leg Raise\n12 Reps Each Leg'
-          },
-          {
-            time: '0:18 – 0:25',
-            shotName: 'CLIP 3 — Ankle Rotations + CTA',
-            camera: 'Front chair shot',
-            action: 'Dono panje goal ghumayein aur camera ko smile karein.',
-            onScreenText: '3. Ankle Rotations (15x)\nSend to Mummy-Papa ❤️'
-          }
-        ],
-        seoTitle: 'Knee Pain Relief Exercises 🦵 Safe Chair Yoga (No Squats!) | Ghutno ka Dard #shorts',
-        tags: '#KneePainRelief #GhutnoKaDard #ChairYoga #JointPain #SeniorFitness #Nuyouth #PainReliefYoga',
-        pinnedComment: 'Ye video apne parents ke saath zaroor share karein ❤️ Kis joint pain par agla video chahiye?'
+          { time: '0:00–0:05', name: 'HOOK (Warm Water)', cam: 'Front mat shot', act: 'Malasana mein baith kar gun-guna paani sip karein aur pet par point karein.', text: 'Subah Pet Saaf Nahi Hota? 🌿\n3-Step Morning Routine' },
+          { time: '0:05–0:12', name: 'CLIP 1 — Tiryaka Tadasana', cam: 'Front full-body', act: 'Haath upar lock karke left aur right bend karein.', text: '1. Side Bend Stretch\n10 Reps Each Side' },
+          { time: '0:12–0:20', name: 'CLIP 2 — Pawanmuktasana', cam: 'Side mat angle', act: 'Let kar dono ghutne seene se lagayein aur halka rock karein.', text: '2. Pawanmuktasana\n30 Sec (Gas Relief)' },
+          { time: '0:20–0:28', name: 'CLIP 3 — Spinal Twist', cam: 'Top-side angle', act: 'Ghutne ek taraf drop aur gardan opposite side ghumayein.', text: '3. Supine Twist (20s)\nTry Tomorrow Morning 🌅' }
+        ]
       },
       {
-        id: 's7',
-        title: 'Double Chin & Jawline Tightening (3 Face Yoga Moves)',
-        pillar: 'Face & Glow',
-        format: 'Short (22–25 sec)',
-        durationSec: 24,
-        musicVibe: '🎵 Trendy Beauty / Chill Beat',
+        id: 'g2', title: '3 Types of Belly: Gas vs Stress vs Posture', pillar: 'Gut Health', format: 'Short', durationSec: 24,
+        hook: 'Visual: 3 side-pose angles + 3 quick labels (Bloating / Cortisol / Tilt)',
+        why: 'High save & share rate without needing any voice',
+        music: '🎵 Trendy Informative Beat',
+        tags: '#BellyFatTypes #Bloating #CortisolBelly #AnteriorPelvicTilt #Nuyouth #shorts',
+        comment: 'Aapka pet kis type ka lagta hai — 1, 2 ya 3? Number comment karein 👇',
         steps: [
-          {
-            time: '0:00 – 0:04',
-            shotName: 'HOOK SHOT — Side Profile Jawline',
-            camera: 'Close-up chest-up shot (acche lighting mein)',
-            action: 'Side profile mein double chin area par haath se point karein, phir 3 fingers dikhayein.',
-            onScreenText: 'Reduce Double Chin ✨\n2-Min Daily Face Yoga'
-          },
-          {
-            time: '0:04 – 0:11',
-            shotName: 'CLIP 1 — Ceiling Pout Stretch',
-            camera: 'Side close-up',
-            action: 'Upar chhat ki taraf dekh kar lips se pout banayein.',
-            onScreenText: '1. Ceiling Pout\n10 Reps x 5 Sec'
-          },
-          {
-            time: '0:11 – 0:18',
-            shotName: 'CLIP 2 — Tongue Press + Chin Lift',
-            camera: 'Front/45° close-up',
-            action: 'Jeebh ko upar taalwe par press karke halka smile rakhein (jawline tight dikhegi).',
-            onScreenText: '2. Tongue Press Hold\n15 Reps'
-          },
-          {
-            time: '0:18 – 0:24',
-            shotName: 'CLIP 3 — Upward Neck & Jaw Sweep',
-            camera: 'Front close-up',
-            action: 'Dono haathon se gardan se jawline ki taraf upward massage karein.',
-            onScreenText: '3. Upward Lymphatic Sweep\n20 Sec Daily ✨'
-          }
-        ],
-        seoTitle: 'Double Chin & Jawline Tightening in 2 Minutes ✨ 3 Face Yoga Exercises #shorts',
-        tags: '#FaceYoga #DoubleChin #JawlineExercise #NaturalGlow #FeelYounger #Nuyouth #AntiAgingYoga',
-        pinnedComment: '10 din try karein ✨ Kya aapko Morning Puffy Face par bhi silent guide chahiye? Comment "GLOW"'
+          { time: '0:00–0:04', name: 'HOOK (Side Profile)', cam: 'Side standing shot', act: 'Pet ke 3 alag areas par point karke 3 fingers dikhayein.', text: '3 Types of Belly 🤔\nCheck Yours!' },
+          { time: '0:04–0:10', name: 'TYPE 1 — Gas / Bloating', cam: 'Side close shot', act: 'Pet halka phoola dikha kar Malasana + Twist pose clip dikhayein.', text: '1. Hard / Evening Bloat\nFix: Warm Water + Twists 🌿' },
+          { time: '0:10–0:17', name: 'TYPE 2 — Stress / Cortisol', cam: 'Seated calm shot', act: 'Deep belly breathing + Legs-up-the-wall dikhayein.', text: '2. Soft Upper/Mid Belly\nFix: Sleep + Deep Breathing 🌙' },
+          { time: '0:17–0:24', name: 'TYPE 3 — Posture Belly', cam: 'Side wall shot', act: 'Pelvic tuck + Glute Bridge clip dikhayein.', text: '3. Lower Belly Pooch\nFix: Pelvic Tilt Exercises ✅' }
+        ]
       },
       {
-        id: 's8',
-        title: '10-Min Silent Follow-Along Posture & Belly Fix (Long Video)',
-        pillar: 'Posture',
-        format: 'Long (10 Min)',
-        durationSec: 60,
-        musicVibe: '🎵 10-Min Calm Continuous Instrumental',
+        id: 'g3', title: 'After-Dinner 5-Min Vajrasana + Wall Legs Up', pillar: 'Gut Health', format: 'Short', durationSec: 22,
+        hook: 'Visual: Khane ke baad seedhe letna ❌ vs Vajrasana ✅',
+        why: 'Relatable Indian family evening habit',
+        music: '🎵 Soft Evening Acoustic',
+        tags: '#Vajrasana #AfterDinnerYoga #DigestionTips #AcidityRelief #Nuyouth',
+        comment: 'Kya aap dinner ke baad 5 min Vajrasana mein baithte hain? YES / NO likhein!',
         steps: [
-          {
-            time: '0:00 – 0:20',
-            shotName: 'INTRO CARD + WALL TEST VISUAL',
-            camera: 'Wide mat + wall shot',
-            action: 'Bina bole wall test dikhayein aur screen par clean title card lagayein.',
-            onScreenText: '10-Min Posture & Lower Belly Reset\nNo Talking · Just Follow Along 🧘‍♀️'
-          },
-          {
-            time: '0:20 – 2:30',
-            shotName: 'BLOCK 1 — Spine Warm-Up (45s Work / 15s Rest)',
-            camera: 'Side mat wide shot',
-            action: 'Cat-Cow, Thread the Needle, Child’s Pose. Editing mein corner mein countdown timer bar lagayein.',
-            onScreenText: 'Pose Name + 45s Timer + "Next: Cobra"'
-          },
-          {
-            time: '2:30 – 5:30',
-            shotName: 'BLOCK 2 — Neck Hump & Chest Opener',
-            camera: 'Side + Front angles',
-            action: 'Chin Tucks, Bhujangasana (Cobra), Wall Angels — har rep clearly slow dikhayein.',
-            onScreenText: 'Breathe Normally · Shoulders Away From Ears'
-          },
-          {
-            time: '5:30 – 8:30',
-            shotName: 'BLOCK 3 — Anterior Pelvic Tilt & Core',
-            camera: 'Side mat angle',
-            action: 'Hip Flexor Lunge, Glute Bridge, Dead Bug — lower back par arrow dikha kar "No Gap" cue dein.',
-            onScreenText: 'Keep Lower Back Pressed to Mat ✅'
-          },
-          {
-            time: '8:30 – 10:00',
-            shotName: 'COOL DOWN + LIVE CLASS TEXT CARD',
-            camera: 'Wide relaxing shot',
-            action: 'Child’s Pose + Namaste smile.',
-            onScreenText: 'Join Daily LIVE: 7 AM & 8 PM 🌅\nSubscribe @Nuyouthishwarisahu'
-          }
-        ],
-        seoTitle: '10-Minute Daily Posture Correction & Lower Belly Fix (No Talking · Timer + Music) | Yoga',
-        tags: '#PostureCorrection #AnteriorPelvicTilt #FollowAlongYoga #NoTalkingYoga #Nuyouth #BackPainRelief',
-        pinnedComment: 'Kya aapko ye bina talking wala Timer + Music follow-along format pasand aaya? "DAY 1 DONE ✅" likhein!'
+          { time: '0:00–0:04', name: 'HOOK (Wrong vs Right)', cam: 'Side mat/bed shot', act: 'Khane ke baad seedhe letne ka pose (❌) -> Vajrasana mein baithna (✅).', text: 'Dinner ke Baad Letna ❌\nDo This for 5 Mins ✅' },
+          { time: '0:04–0:13', name: 'CLIP 1 — Vajrasana Hold', cam: 'Side mat angle', act: 'Seedhi spine ke saath Vajrasana mein baith kar deep breath lein.', text: '1. Vajrasana (3–5 Mins)\nBoosts Digestion ⚡' },
+          { time: '0:13–0:22', name: 'CLIP 2 — Slow Seated Twist', cam: 'Front mat shot', act: 'Vajrasana mein hi left aur right gentle twist karein + smile.', text: '2. Gentle Twists (10x)\nBye-Bye Acidity & Bloat 🌿' }
+        ]
+      },
+      {
+        id: 'g4', title: 'Acidity & Gas Instant Relief — 3 Mat Poses', pillar: 'Gut Health', format: 'Short', durationSec: 24,
+        hook: 'Visual: Pet pakad kar discomfort ❌ -> Pawanmuktasana relief ✅',
+        why: 'Evergreen high-search Indian wellness query',
+        music: '🎵 Soothing Wellness Beat',
+        tags: '#AcidityRelief #GasRelief #BloatingYoga #GutHealth #Nuyouth #shorts',
+        comment: 'Gas aur acidity ke liye bina dawai ye 3 poses save kar lein 📌',
+        steps: [
+          { time: '0:00–0:04', name: 'HOOK', cam: 'Front seated shot', act: 'Pet aur seene par haath rakh kar discomfort dikhayein (❌) -> mat par aayein.', text: 'Gas & Acidity Relief 🌿\n3 Instant Poses' },
+          { time: '0:04–0:11', name: 'CLIP 1 — Apanasana (Knee Hug)', cam: 'Side mat shot', act: 'Dono ghutne pet par press karke 5 deep breaths.', text: '1. Knee-to-Chest (30s)' },
+          { time: '0:11–0:18', name: 'CLIP 2 — Child’s Pose (Balasana)', cam: 'Side mat shot', act: 'Ghutne khol kar aage stretch karein.', text: '2. Child’s Pose (45s)' },
+          { time: '0:18–0:24', name: 'CLIP 3 — Sheetali Breathing', cam: 'Close front shot', act: 'Tongue roll karke cool breath inhale dikhayein.', text: '3. Cooling Breath (10x)\nSave This Video 📌' }
+        ]
+      },
+      {
+        id: 'g5', title: 'Morning Gut & Liver Detox 8-Min Silent Flow', pillar: 'Gut Health', format: 'Long', durationSec: 60,
+        hook: 'Visual: Timer bar + pose name + Inhale/Exhale visual cue',
+        why: 'Short-to-Long funnel for Digestion viewers (37K/day)',
+        music: '🎵 8-Min Peaceful Morning Flute',
+        tags: '#GutDetoxYoga #MorningYoga #ConstipationRelief #NoTalkingYoga #Nuyouth',
+        comment: 'Kal subah ye 8-min routine follow karke comment mein "DONE 🌿" zaroor likhein!',
+        steps: [
+          { time: '0:00–0:30', name: 'INTRO + WARM WATER', cam: 'Wide morning mat shot', act: 'Warm water sip + standing stretch intro.', text: '8-Min Morning Gut Reset\nNo Talking · Empty Stomach 🌿' },
+          { time: '0:30–3:30', name: 'BLOCK 1 — Standing Twists & Malasana', cam: 'Front wide angle', act: 'Tiryaka Tadasana, Kati Chakrasana, Malasana hold.', text: 'Timer: 45s Each Pose' },
+          { time: '3:30–6:30', name: 'BLOCK 2 — Mat Gut Massage', cam: 'Side mat angle', act: 'Ardha Matsyendrasana, Pawanmuktasana, Supine Twist.', text: 'Exhale Deeply on Every Twist' },
+          { time: '6:30–8:00', name: 'BLOCK 3 — Kapalbhati / Relax', cam: 'Front medium shot', act: 'Easy Sukhasana + gentle breathing + Namaste.', text: 'Join Morning 7 AM Live 🌅\nSubscribe @Nuyouth' }
+        ]
+      },
+      {
+        id: 'w1', title: 'PCOD / Irregular Periods — 3 Hormone Poses', pillar: "Women's Health", format: 'Short', durationSec: 28,
+        hook: 'Visual: Butterfly + Chakki Chalan + Reclined Butterfly with rep badges',
+        why: 'Women’s Health Short (17K) + huge daily demand',
+        music: '🎵 Soft Aesthetic Wellness Beat',
+        tags: '#PCOS #PCOD #WomensHealth #IrregularPeriods #HormoneBalance #Nuyouth',
+        comment: 'Kya aapko PCOS/PCOD par full 10-min follow-along video chahiye? "🌸" comment karein!',
+        steps: [
+          { time: '0:00–0:04', name: 'HOOK (Calm Seated)', cam: 'Front medium mat shot', act: 'Haath lower belly par rakh kar smile karein, phir 3 fingers dikhayein.', text: 'PCOD / Irregular Periods? 🌸\n3 Daily Hormone Poses' },
+          { time: '0:04–0:12', name: 'CLIP 1 — Butterfly Pose', cam: 'Front mat shot', act: 'Talve mila kar smooth butterfly flaps karein.', text: '1. Butterfly Pose\n1–2 Minutes Daily' },
+          { time: '0:12–0:20', name: 'CLIP 2 — Chakki Chalanasana', cam: '45° front-side', act: 'Pair khol kar haath jod kar bada circle banayein.', text: '2. Chakki Chalan\n10+10 Slow Circles' },
+          { time: '0:20–0:28', name: 'CLIP 3 — Reclined Butterfly', cam: 'Side mat shot', act: 'Butterfly legs ke saath let kar deep breathing dikhayein.', text: '3. Reclined Butterfly (1m)\nShare with Sisters ❤️' }
+        ]
+      },
+      {
+        id: 'w2', title: 'Post-Pregnancy Belly Pooch (No Crunches!)', pillar: "Women's Health", format: 'Short', durationSec: 25,
+        hook: 'Visual: Crunches ❌ (red cross) -> Pelvic Tilt & Heel Slides ✅',
+        why: 'Safe postpartum core healing niche',
+        music: '🎵 Gentle Inspiring Instrumental',
+        tags: '#PostPregnancyBelly #DiastasisRecti #MomFitness #PelvicFloor #Nuyouth',
+        comment: 'Ye safe exercises save kar lein 📌 Post-delivery plan ke liye "MOM" comment karein ❤️',
+        steps: [
+          { time: '0:00–0:05', name: 'HOOK (Stop Crunches)', cam: 'Side mat shot', act: '2 crunches karke "NO ❌" gesture karein.', text: 'Post-Delivery Belly? ⚠️\nStop Doing Crunches! ❌' },
+          { time: '0:05–0:12', name: 'CLIP 1 — Belly Breath + Tuck', cam: 'Close side mat shot', act: 'Exhale ke saath naabhi andar kheech kar kamar mat se chipkayein.', text: '1. Exhale & Pull Navel In ✅\n12 Slow Reps' },
+          { time: '0:12–0:19', name: 'CLIP 2 — Heel Slides', cam: 'Side mat shot', act: 'Core tight rakh kar ek-ek edi dheere slide karein.', text: '2. Gentle Heel Slides ✅\n10 Reps Each Leg' },
+          { time: '0:19–0:25', name: 'CLIP 3 — Pelvic Bridge', cam: 'Side mat shot', act: 'Slow glute bridge + safety disclaimer text.', text: '3. Pelvic Bridge (12x)\n*Consult Dr After C-Section' }
+        ]
+      },
+      {
+        id: 'w3', title: '35+ Women: Joint Mobility & Hormone Reset', pillar: "Women's Health", format: 'Short', durationSec: 25,
+        hook: 'Visual: Slow gentle standing-to-mat flow (zero jumping)',
+        why: 'Underserved 35–50 female demographic',
+        music: '🎵 Graceful Uplifting Acoustic',
+        tags: '#WomenOver35 #WomenOver40 #JointMobility #HormoneHealth #Nuyouth',
+        comment: 'Agar aapki age 30+ ya 40+ hai toh comment mein "💪" bhejein — aur videos banayenge!',
+        steps: [
+          { time: '0:00–0:04', name: 'HOOK', cam: 'Front standing shot', act: 'Knees/back touch karke smile ke saath gentle flow shuru karein.', text: '35+ Women Must Do This 🌸\nZero Jumping · Joint Safe' },
+          { time: '0:04–0:11', name: 'CLIP 1 — Cat-Cow Flow', cam: 'Side mat shot', act: 'Slow spine arch aur round karein.', text: '1. Cat-Cow (12 Reps)\nSpine & Hormone Boost' },
+          { time: '0:11–0:18', name: 'CLIP 2 — Goddess Squat Hold', cam: 'Front wide stance', act: 'Knees soft rakh kar shallow comfortable squat hold.', text: '2. Goddess Hold (20s)\nPelvic & Leg Strength' },
+          { time: '0:18–0:25', name: 'CLIP 3 — Legs Up the Wall', cam: 'Side wall shot', act: 'Deewar par pair upar rakh kar relax karein.', text: '3. Legs Up Wall (2 Mins)\nSave & Do Daily ❤️' }
+        ]
+      },
+      {
+        id: 'w4', title: 'Thyroid Fatigue — 3 Throat & Neck Opening Poses', pillar: "Women's Health", format: 'Short', durationSec: 25,
+        hook: 'Visual: Fish Pose (Matsyasana) + Cobra + Bridge Pose',
+        why: 'Massive search volume among Indian women',
+        music: '🎵 Peaceful Healing Track',
+        tags: '#ThyroidYoga #Hypothyroid #ThroatChakra #WomensHealth #Nuyouth #shorts',
+        comment: 'Kya aapko Thyroid weight & fatigue ke liye 10-min routine chahiye? "YES" likhein 👇',
+        steps: [
+          { time: '0:00–0:04', name: 'HOOK', cam: 'Close front shot', act: 'Gardan par gentle haath rakh kar 3 fingers dikhayein.', text: 'Thyroid & Low Energy? 🦋\n3 Gentle Neck Poses' },
+          { time: '0:04–0:11', name: 'CLIP 1 — Ustrasana / Supported Chest Lift', cam: 'Side mat shot', act: 'Kneeling mein haath kamar par rakh kar throat halka upar kholein.', text: '1. Gentle Throat Open (20s)' },
+          { time: '0:11–0:18', name: 'CLIP 2 — Setu Bandhasana (Bridge)', cam: 'Side mat shot', act: 'Hips lift karein jisse chin chest ke paas aaye (thyroid massage).', text: '2. Bridge Pose (30s x 2)' },
+          { time: '0:18–0:25', name: 'CLIP 3 — Matsyasana (Supported Fish)', cam: 'Side mat shot', act: 'Pillow/towel upper back ke neeche rakh kar chest & neck kholein.', text: '3. Supported Fish Pose\nSave for Daily Morning 📌' }
+        ]
+      },
+      {
+        id: 'w5', title: 'Period Cramps Relief — 2-Min Bed Yoga', pillar: "Women's Health", format: 'Short', durationSec: 24,
+        hook: 'Visual: Bed par pillow ke saath 2 soothing poses',
+        why: 'Very high save/bookmark rate',
+        music: '🎵 Cozy Lo-Fi Rain / Calm Piano',
+        tags: '#PeriodCramps #PeriodPainRelief #BedYoga #WomensHealth #Nuyouth #shorts',
+        comment: 'Ye bed yoga save karke rakhein ❤️ Kisko share karna chahengi? Tag ya forward karein!',
+        steps: [
+          { time: '0:00–0:04', name: 'HOOK (On Bed)', cam: 'Side bed shot', act: 'Lower belly pakad kar comfort ke liye pillow lein.', text: 'Period Cramps? 😣\n2-Min Bed Yoga Relief ❤️' },
+          { time: '0:04–0:12', name: 'CLIP 1 — Supported Child’s Pose', cam: 'Side bed shot', act: 'Pillow par chest rakh kar ghutne khol kar aage rest karein.', text: '1. Pillow Child’s Pose (1m)' },
+          { time: '0:12–0:18', name: 'CLIP 2 — Reclined Butterfly', cam: 'Top/side bed shot', act: 'Peeth ke bal let kar haath lower belly par rakhein.', text: '2. Reclined Butterfly (1m)' },
+          { time: '0:18–0:24', name: 'CLIP 3 — Knee-to-Chest Sway', cam: 'Side bed shot', act: 'Ek ghutna hug karke gentle sway karein.', text: 'Instant Lower Back Comfort\nSave This 📌' }
+        ]
+      },
+      {
+        id: 'w6', title: 'Morning / Evening Live Yoga Demo Class', pillar: "Women's Health", format: 'Live', durationSec: 60,
+        hook: 'Visual: Follow-along music + clear hand signals + screen timer',
+        why: 'Converts Shorts viewers to nuyouth.in live classes',
+        music: '🎵 Live Background Royalty-Free Mix',
+        tags: '#LiveYoga #NuyouthLive #MorningYoga #WeightLossYoga #StayFitIndia',
+        comment: 'Kal subah 7 AM ya shaam 8 PM Live mein kaun-kaun jud raha hai? "ME 🙋‍♀️" likhein!',
+        steps: [
+          { time: '0:00–2:00', name: 'LIVE START — Warm Greeting', cam: 'Wide mat shot', act: 'Namaste + screen banner showing workout schedule.', text: 'Welcome Nuyouth Family! 🙏\n30-Min Full Body + Posture Live' },
+          { time: '2:00–8:00', name: 'WARM-UP', cam: 'Front wide angle', act: 'Joint rotations, neck rolls, side stretches.', text: 'Follow My Pace · Smile & Breathe' },
+          { time: '8:00–24:00', name: 'MAIN FLOW (3 Rounds)', cam: 'Side + Front', act: 'Pelvic tilt + fat-loss low-impact flow (40s on / 20s off).', text: 'Use Hand Signals: 3-2-1 Next Pose!' },
+          { time: '24:00–30:00', name: 'COOL DOWN + NUYOUTH.IN', cam: 'Front close shot', act: 'Pranayama + Namaste + join class card.', text: 'Join Personal Class: nuyouth.in 🌐' }
+        ]
+      },
+      {
+        id: 'd1', title: 'Ghutno ka Dard (Knee Pain) — Chair Yoga', pillar: 'Daily Pain', format: 'Short', durationSec: 25,
+        hook: 'Visual: Deep squats ❌ -> Chair + Rolled Towel Press ✅',
+        why: 'Parents / 40+ audience ke liye super clear visual demo',
+        music: '🎵 Soft Uplifting Acoustic',
+        tags: '#KneePainRelief #GhutnoKaDard #ChairYoga #JointPain #Nuyouth #shorts',
+        comment: 'Ye video apne mummy-papa ke saath zaroor share karein ❤️',
+        steps: [
+          { time: '0:00–0:04', name: 'HOOK (Squats NO, Chair YES)', cam: 'Side-front angle', act: 'Squat mein ghutna pakad kar ❌ dikhayein, phir kursi par baithein ✅.', text: 'Ghutno Mein Dard? 🦵\nNo Squats ❌ Try Chair ✅' },
+          { time: '0:04–0:11', name: 'CLIP 1 — Towel Press', cam: 'Close side on mat/bed', act: 'Ghutne ke neeche rolled towel rakh kar neeche press karein.', text: '1. Towel Knee Press\n10 Sec Hold x 10' },
+          { time: '0:11–0:18', name: 'CLIP 2 — Seated Leg Raise', cam: 'Side chair shot', act: 'Kursi par baith kar ek pair seedha uthayein, toes apni taraf.', text: '2. Chair Leg Raise\n12 Reps Each Leg' },
+          { time: '0:18–0:25', name: 'CLIP 3 — Ankle Rotations', cam: 'Front chair shot', act: 'Panje goal ghumayein + smile.', text: '3. Ankle Rotations (15x)\nSend to Parents ❤️' }
+        ]
+      },
+      {
+        id: 'd2', title: 'Kitchen Standing Heel & Leg Pain Relief', pillar: 'Daily Pain', format: 'Short', durationSec: 24,
+        hook: 'Visual: Wall calf stretch + Viparita Karani (Legs up wall)',
+        why: 'Homemakers ke liye hyper-relatable hook',
+        music: '🎵 Warm Relaxing Acoustic',
+        tags: '#HeelPain #LegPainRelief #PlantarFasciitis #VaricoseVeins #Nuyouth #shorts',
+        comment: 'Din bhar khade rehne se pairon mein dard hota hai? Ye 2 stretches aaj hi try karein!',
+        steps: [
+          { time: '0:00–0:04', name: 'HOOK (Heel/Calf Point)', cam: 'Side standing', act: 'Pindli aur edi par haath rakh kar tired expression -> smile.', text: 'Din Bhar Khade Rehne se\nEdi & Pair Dard? 🦶' },
+          { time: '0:04–0:12', name: 'CLIP 1 — Wall Calf Stretch', cam: 'Side at wall', act: 'Ek pair peeche rakh kar edi zameen par press karein.', text: '1. Wall Calf Stretch\n30 Sec Each Leg' },
+          { time: '0:12–0:18', name: 'CLIP 2 — Bottle / Ball Foot Roll', cam: 'Close-up foot', act: 'Pair ke talve ke neeche bottle/ball roll karein.', text: '2. Foot Arch Roll (1 Min)' },
+          { time: '0:18–0:24', name: 'CLIP 3 — Legs Up the Wall', cam: 'Side wall shot', act: 'Deewar ke sahare pair upar rakh kar relax karein.', text: '3. Legs Up Wall (3 Mins)\nInstant Relief ✨' }
+        ]
+      },
+      {
+        id: 'd3', title: 'Sciatica / Lower Back Nerve Relief — 2 Stretches', pillar: 'Daily Pain', format: 'Short', durationSec: 25,
+        hook: 'Visual: Lower back se leg tak line point ❌ -> Figure-4 stretch ✅',
+        why: 'Back Pain (4.4M) audience ka next logical topic',
+        music: '🎵 Calm Gentle Instrumental',
+        tags: '#SciaticaRelief #LowerBackPain #KamarDard #NervePain #Nuyouth #shorts',
+        comment: 'Kya aapko kamar se pair tak dard jaata hai? Ye gentle stretch save karein 📌',
+        steps: [
+          { time: '0:00–0:04', name: 'HOOK (Nerve Path)', cam: 'Side standing', act: 'Lower back se thigh ke peeche haath slide karke dard dikhayein.', text: 'Kamar se Pair Tak Dard? ⚡\n(Sciatica Safe Stretches)' },
+          { time: '0:04–0:12', name: 'CLIP 1 — Supine Figure-4 Stretch', cam: 'Side-front mat shot', act: 'Let kar ek ankle doosre ghutne par rakh kar thigh gentle pull karein.', text: '1. Figure-4 Stretch\n30 Sec Each Side' },
+          { time: '0:12–0:19', name: 'CLIP 2 — Sphinx / Gentle Cobra', cam: 'Side mat shot', act: 'Elbows par chest upar rakh kar lower back relax karein.', text: '2. Gentle Sphinx Pose\n30 Sec Hold' },
+          { time: '0:19–0:25', name: 'CLIP 3 — Side Knee Drop', cam: 'Side mat shot', act: 'Dono ghutne mode kar gentle side-to-side sway.', text: 'Move Slowly · No Jerks!\nSave This Routine 📌' }
+        ]
+      },
+      {
+        id: 'd4', title: 'Subah Uthne par Body Stiff? 3-Min Bed Stretch', pillar: 'Daily Pain', format: 'Short', durationSec: 24,
+        hook: 'Visual: Bed par uthte hi Cat-Cow + Knee Hug + Twist',
+        why: 'Zero equipment, high-retention morning routine',
+        music: '🎵 Soft Morning Sunrise Beat',
+        tags: '#MorningStretch #BedYoga #BodyStiffness #BackPainRelief #Nuyouth #shorts',
+        comment: 'Kal subah bistar se uthne se pehle ye 3 min stretch try karein ☀️',
+        steps: [
+          { time: '0:00–0:04', name: 'HOOK (Waking Up)', cam: 'Side bed shot', act: 'Uthne ke baad kamar pakad kar stiffness dikhayein.', text: 'Subah Uthne par Kamar Tight? 🛏️\n3-Min Bed Stretch' },
+          { time: '0:04–0:10', name: 'CLIP 1 — Bed Knee Hug', cam: 'Side bed shot', act: 'Lete-lete dono ghutne hug karein.', text: '1. Knee-to-Chest (30s)' },
+          { time: '0:10–0:17', name: 'CLIP 2 — Bed Seated Twist', cam: 'Front bed shot', act: 'Bistar par baith kar left-right twist karein.', text: '2. Easy Spinal Twist (10x)' },
+          { time: '0:17–0:24', name: 'CLIP 3 — Overhead Reach + Smile', cam: 'Front bed shot', act: 'Dono haath upar stretch karke fresh smile dein.', text: '3. Full Body Wake-Up Stretch\nGood Morning! 🌅' }
+        ]
+      },
+      {
+        id: 'd5', title: 'Sote Waqt Kamar Dard? Sahi Pillow Position', pillar: 'Daily Pain', format: 'Short', durationSec: 22,
+        hook: 'Visual: Stomach sleeping ❌ vs Side + Knee Pillow ✅',
+        why: 'Instant visual aha! moment without speaking',
+        music: '🎵 Dreamy Night Lo-Fi',
+        tags: '#SleepingPosture #BackPainRelief #PillowPosition #BetterSleep #Nuyouth',
+        comment: 'Aap kis position mein sote hain — Seedha, Karwat ya Pet ke bal? 😅',
+        steps: [
+          { time: '0:00–0:05', name: 'HOOK (Wrong Sleeping)', cam: 'Side bed/mat shot', act: 'Pet ke bal ulta sone ka pose (❌) + red cross.', text: 'Kamar Dard ki Wajah?\nGalat Sone ka Tarika ❌' },
+          { time: '0:05–0:13', name: 'CLIP 1 — Side Sleep + Knee Pillow', cam: 'Side bed/mat shot', act: 'Karwat letein aur dono ghutno ke beech ek pillow rakhein (✅).', text: '1. Side Sleep + Knee Pillow ✅\n(Aligns Spine & Hips)' },
+          { time: '0:13–0:22', name: 'CLIP 2 — Back Sleep + Under-Knee Pillow', cam: 'Side bed/mat shot', act: 'Seedhe letein aur ghutno ke neeche ek pillow rakhein (✅).', text: '2. Back Sleep + Under-Knee Pillow ✅\nSave for Tonight 🌙' }
+        ]
+      },
+      {
+        id: 'f1', title: 'Double Chin & Jawline Tightening (3 Face Moves)', pillar: 'Face & Glow', format: 'Short', durationSec: 24,
+        hook: 'Visual: Side jawline close-up + 3 easy face yoga moves',
+        why: 'Directly matches "Feel Younger" tagline',
+        music: '🎵 Trendy Beauty / Chill Beat',
+        tags: '#FaceYoga #DoubleChin #JawlineExercise #NaturalGlow #Nuyouth #shorts',
+        comment: '10 din try karein ✨ Kya aapko Morning Puffy Face par bhi video chahiye? Comment "GLOW"',
+        steps: [
+          { time: '0:00–0:04', name: 'HOOK (Side Jawline)', cam: 'Close-up chest-up', act: 'Double chin area par tap karein + 3 fingers dikhayein.', text: 'Reduce Double Chin ✨\n2-Min Daily Face Yoga' },
+          { time: '0:04–0:11', name: 'CLIP 1 — Ceiling Pout', cam: 'Side close-up', act: 'Chhat ki taraf dekh kar lips se pout banayein.', text: '1. Ceiling Pout\n10 Reps x 5 Sec' },
+          { time: '0:11–0:18', name: 'CLIP 2 — Tongue Press', cam: '45° close-up', act: 'Jeebh upar taalwe par press karke smile karein.', text: '2. Tongue Press Hold\n15 Reps' },
+          { time: '0:18–0:24', name: 'CLIP 3 — Upward Sweep', cam: 'Front close-up', act: 'Gardan se jawline ki taraf upward fingers sweep karein.', text: '3. Upward Neck Sweep (20s)\nFeel Younger ✨' }
+        ]
+      },
+      {
+        id: 'f2', title: 'Subah Puffy Face & Dark Circles — 2-Min Massage', pillar: 'Face & Glow', format: 'Short', durationSec: 24,
+        hook: 'Visual: Finger movement arrows on cheeks, under-eyes & neck',
+        why: 'Visual arrows make it effortless to follow silently',
+        music: '🎵 Fresh Morning Aesthetic Beat',
+        tags: '#FaceMassage #PuffyFace #DarkCircles #LymphaticDrainage #Nuyouth #shorts',
+        comment: 'Face cream ke saath subah ye 2-min massage try karein ✨ Save kiya?',
+        steps: [
+          { time: '0:00–0:04', name: 'HOOK (Morning Face)', cam: 'Front close-up', act: 'Under-eyes & cheeks point karein + moisturizer drop lagayein.', text: 'Subah Face Phoola Lagta Hai? ☀️\n2-Min Glow Massage' },
+          { time: '0:04–0:10', name: 'CLIP 1 — Under-Eye Gentle Tap', cam: 'Close-up eyes', act: 'Ring finger se inner corner se bahar halka tap karein.', text: '1. Ring Finger Eye Tap (20s)' },
+          { time: '0:10–0:17', name: 'CLIP 2 — Cheekbone Upward Lift', cam: 'Front close-up', act: 'Naak ke paas se kaano ki taraf smooth upward sweep.', text: '2. Cheekbone Lift (10x)' },
+          { time: '0:17–0:24', name: 'CLIP 3 — Collarbone Drain', cam: 'Front close-up', act: 'Gardan ke side se collarbone ki taraf downward sweep.', text: '3. Neck Drain (10x)\nNatural Morning Glow ✨' }
+        ]
+      },
+      {
+        id: 'f3', title: 'Hair Fall Control: Balayam + Inverted Flow', pillar: 'Face & Glow', format: 'Short', durationSec: 24,
+        hook: 'Visual: Nail rubbing (Balayam) + Downward Dog + Scalp tap',
+        why: 'Pairs directly with her existing massage/acupressure theme',
+        music: '🎵 Peaceful Flute / Tabla Fusion',
+        tags: '#HairFallControl #Balayam #HairGrowthYoga #Acupressure #Nuyouth #shorts',
+        comment: 'Kya aap roz 2 minute Balayam karte hain? Comment mein batayein 🌿',
+        steps: [
+          { time: '0:00–0:04', name: 'HOOK (Hair & Nails)', cam: 'Close-up hands + face', act: 'Baal dikha kar Balayam nail rubbing dikhayein.', text: 'Control Hair Fall Naturally 🌿\n3 Daily Blood-Flow Habits' },
+          { time: '0:04–0:11', name: 'CLIP 1 — Balayam (Nail Rubbing)', cam: 'Close-up hands', act: 'Anguthe ko chhod kar baaki nails aapas mein rub karein.', text: '1. Balayam (2–5 Mins Daily)' },
+          { time: '0:11–0:18', name: 'CLIP 2 — Downward Dog (Adho Mukha)', cam: 'Side mat shot', act: 'Inverted V pose hold karein (blood flow to scalp).', text: '2. Downward Dog (30 Sec)' },
+          { time: '0:18–0:24', name: 'CLIP 3 — Fingertip Scalp Tap', cam: 'Close-up head', act: 'Soft fingertips se poore scalp par tapping massage.', text: '3. Scalp Tapping (1 Min)\nSave & Share 📌' }
+        ]
+      },
+      {
+        id: 'f4', title: 'Night Stress Release & Deep Sleep (8-Min Silent)', pillar: 'Face & Glow', format: 'Long', durationSec: 60,
+        hook: 'Visual: Warm lamp lighting + 4-7-8 breathing visual + slow stretches',
+        why: 'Public relaxing bedtime video for Videos tab',
+        music: '🎵 8-Min Deep Sleep Ambient Sound',
+        tags: '#NightYoga #StressRelief #DeepSleep #BedtimeRoutine #Nuyouth #NoTalkingYoga',
+        comment: 'Aaj raat sone se pehle ye follow karein aur batayein neend kaisi aayi 🌙',
+        steps: [
+          { time: '0:00–0:30', name: 'INTRO (Warm Lighting)', cam: 'Wide cozy mat/bed shot', act: 'Shoulder rolls + gentle smile.', text: '8-Min Night Healing Yoga 🌙\nRelease Stress & Sleep Better' },
+          { time: '0:30–3:30', name: 'BLOCK 1 — Neck & Shoulder Melt', cam: 'Front medium shot', act: 'Seated neck stretch, Eagle arms, Child Pose.', text: 'Move Slowly · Dim Screen Brightness' },
+          { time: '3:30–6:30', name: 'BLOCK 2 — Hip & Lower Back Release', cam: 'Side mat shot', act: 'Supine twist, Reclined Butterfly, Legs up wall.', text: '4-7-8 Breathing Visual Cue' },
+          { time: '6:30–8:00', name: 'BLOCK 3 — Scalp & Foot Acupressure', cam: 'Close-up calm shot', act: 'Gentle forehead/temple massage + Namaste.', text: 'Good Night 🌙 Subscribe @Nuyouth' }
+        ]
       }
     ];
 
-    const WEEKLY_PLAN = [
-      { day: 'Monday', badge: 'Posture', format: 'Silent Short', topic: 'Fat Belly vs Posture Belly (10-Sec Wall Test)', goal: 'High Retention (Visual Comparison)' },
-      { day: 'Tuesday', badge: 'Gut Health', format: 'Silent Short', topic: 'Warm Water in Malasana + 3 Digestion Poses', goal: 'Morning Saves & Shares' },
-      { day: 'Wednesday', badge: "Women's Health", format: 'Short + Poll', topic: 'PCOD 3 Poses + Community Tab Poll', goal: 'Audience Feedback' },
-      { day: 'Thursday', badge: 'Daily Pain', format: 'Silent Short', topic: 'Ghutno ka Dard — Chair Yoga (❌ Squats vs ✅ Chair)', goal: 'Family WhatsApp Shares' },
-      { day: 'Friday', badge: 'Face & Glow', format: 'Silent Short', topic: 'Double Chin & Jawline 3 Face Yoga Moves', goal: 'New Subscribers' },
-      { day: 'Saturday', badge: 'Posture', format: 'Silent Long (10m)', topic: '10-Min Follow-Along Posture Fix (Timer + Music)', goal: 'Watch Hours & Long Tab Growth' },
-      { day: 'Sunday', badge: 'Live Class', format: 'Public Live', topic: '30-Min Healing Yoga + Posture Check (7 AM / 8 PM)', goal: 'Live Class Signups (nuyouth.in)' }
+    // 30-Day Calendar rotating all 25 topics cleanly + 5 bonus weekend recaps/lives!
+    const CALENDAR_30 = [
+      'p1','g1','w1','d1','f1','p5','w6',
+      'p2','g2','w2','d2','f2','g5','w6',
+      'p3','g3','w3','d3','f3','f4','w6',
+      'p4','g4','w4','d4','d5','w5','p1',
+      'g1','w1'
     ];
 
-    let ideas = [];
+    const CHECKLIST_ITEMS = [
+      { id: 'c1', label: '9:16 Vertical (Shorts) / 16:9 (Long) frame set hai' },
+      { id: 'c2', label: 'Text Top-Center Safe Zone mein hai (UI buttons se door)' },
+      { id: 'c3', label: 'Pehle 3 second mein ❌/✅ ya Test visual hook dikh raha hai' },
+      { id: 'c4', label: 'Har exercise par Reps / Seconds badge likha hai' },
+      { id: 'c5', label: 'Upload ke turant baad Pinned Comment daal diya hai' }
+    ];
+
+    let topicStatus = {};
+    let dayDone = {};
+    let checklistState = {};
     let selectedPillar = 'all';
-    let activeShotId = 's1';
-    let weekChecks = {};
+    let activeShotId = 'p1';
+    let activeClipIdx = 0;
     let timerSeconds = 30;
     let timerInterval = null;
-
-    function toggleTheme() {
-      const root = document.documentElement;
-      const isDark = root.classList.toggle('dark');
-      document.getElementById('theme-btn').textContent = isDark ? '☀️ Light' : '🌙 Dark';
-      try { localStorage.setItem('nuyouth_theme', isDark ? 'dark' : 'light'); } catch (e) {}
-    }
 
     function loadState() {
       try {
@@ -799,20 +824,28 @@
           document.documentElement.classList.add('dark');
           document.getElementById('theme-btn').textContent = '☀️ Light';
         }
-        const savedIdeas = localStorage.getItem('nuyouth_silent_ideas_v1');
-        ideas = savedIdeas ? JSON.parse(savedIdeas) : DEFAULT_IDEAS.map(i => ({ ...i, status: 'To Shoot' }));
-        const savedWeek = localStorage.getItem('nuyouth_silent_week_v1');
-        if (savedWeek) weekChecks = JSON.parse(savedWeek);
-      } catch (e) {
-        ideas = DEFAULT_IDEAS.map(i => ({ ...i, status: 'To Shoot' }));
-      }
+        topicStatus = JSON.parse(localStorage.getItem('nuyouth_v2_status') || '{}');
+        dayDone = JSON.parse(localStorage.getItem('nuyouth_v2_days') || '{}');
+        checklistState = JSON.parse(localStorage.getItem('nuyouth_v2_checks') || '{}');
+        const custom = JSON.parse(localStorage.getItem('nuyouth_v2_custom') || '[]');
+        custom.forEach(c => { if (!TOPICS_DATA.find(t => t.id === c.id)) TOPICS_DATA.unshift(c); });
+      } catch (e) {}
     }
 
     function saveState() {
       try {
-        localStorage.setItem('nuyouth_silent_ideas_v1', JSON.stringify(ideas));
-        localStorage.setItem('nuyouth_silent_week_v1', JSON.stringify(weekChecks));
+        localStorage.setItem('nuyouth_v2_status', JSON.stringify(topicStatus));
+        localStorage.setItem('nuyouth_v2_days', JSON.stringify(dayDone));
+        localStorage.setItem('nuyouth_v2_checks', JSON.stringify(checklistState));
+        const customOnly = TOPICS_DATA.filter(t => String(t.id).startsWith('custom_'));
+        localStorage.setItem('nuyouth_v2_custom', JSON.stringify(customOnly));
       } catch (e) {}
+    }
+
+    function toggleTheme() {
+      const isDark = document.documentElement.classList.toggle('dark');
+      document.getElementById('theme-btn').textContent = isDark ? '☀️ Light' : '🌙 Dark';
+      try { localStorage.setItem('nuyouth_theme', isDark ? 'dark' : 'light'); } catch (e) {}
     }
 
     function showToast(msg) {
@@ -843,7 +876,7 @@
     }
 
     function switchTab(tab) {
-      ['ideas', 'shots', 'assets', 'hooks', 'calendar'].forEach(t => {
+      ['calendar', 'shots', 'ideas', 'assets', 'hooks'].forEach(t => {
         document.getElementById('tab-' + t).classList.toggle('hidden', t !== tab);
         const btn = document.getElementById('tab-btn-' + t);
         if (t === tab) {
@@ -855,157 +888,86 @@
     }
 
     function updateStats() {
-      document.getElementById('stat-total').textContent = ideas.length;
-      document.getElementById('stat-scripts').textContent = SHOTS.length;
-      document.getElementById('stat-done').textContent = ideas.filter(i => i.status === 'Shot' || i.status === 'Published').length;
+      document.getElementById('stat-total').textContent = TOPICS_DATA.length;
+      document.getElementById('stat-scripts').textContent = TOPICS_DATA.length;
+      const done = TOPICS_DATA.filter(t => topicStatus[t.id] === 'Shot' || topicStatus[t.id] === 'Published').length;
+      document.getElementById('stat-done').textContent = done;
     }
 
-    function renderPillarChips() {
-      document.getElementById('pillar-chips').innerHTML = PILLARS.map(p => {
-        const active = selectedPillar === p.id;
-        return `<button onclick="setPillar('${p.id.replace(/'/g, "\\'")}')"
-          class="px-3 py-1 rounded-full text-xs font-medium transition cursor-pointer ${
-            active
-              ? 'bg-[var(--primary)] text-[var(--primary-foreground)]'
-              : 'bg-[var(--background)] border border-[var(--border)] text-[var(--muted-foreground)] hover:text-[var(--foreground)]'
-          }">${p.label}</button>`;
-      }).join('');
-    }
+    // ---------- 30-DAY CALENDAR ----------
+    function render30DayCalendar() {
+      const doneCount = CALENDAR_30.filter((_, i) => dayDone['day_' + (i + 1)]).length;
+      document.getElementById('cal-progress').textContent = `${doneCount} / 30`;
 
-    function setPillar(id) {
-      selectedPillar = id;
-      renderPillarChips();
-      renderIdeas();
-    }
-
-    function renderIdeas() {
-      const q = document.getElementById('search-input').value.trim().toLowerCase();
-      const fmt = document.getElementById('filter-format').value;
-      const st = document.getElementById('filter-status').value;
-
-      const filtered = ideas.filter(item => {
-        if (selectedPillar !== 'all' && item.pillar !== selectedPillar) return false;
-        if (fmt !== 'all' && item.format !== fmt) return false;
-        if (st !== 'all' && item.status !== st) return false;
-        if (q && !(item.title + ' ' + item.hook + ' ' + item.pillar + ' ' + item.why).toLowerCase().includes(q)) return false;
-        return true;
-      });
-
-      const grid = document.getElementById('ideas-grid');
-      if (!filtered.length) {
-        grid.innerHTML = `<div class="col-span-full text-center py-10 bg-[var(--card)] border border-[var(--border)] rounded-xl text-sm text-[var(--muted-foreground)]">Koi matching topic nahi mila. Filters reset karein ya apna naya idea add karein!</div>`;
-        return;
-      }
-
-      grid.innerHTML = filtered.map(item => {
-        const statusColor = item.status === 'Published'
-          ? 'text-[var(--success)] border-[var(--success)]'
-          : item.status === 'Shot'
-            ? 'text-[var(--warning)] border-[var(--warning)]'
-            : 'text-[var(--muted-foreground)] border-[var(--border)]';
-
+      document.getElementById('calendar-grid').innerHTML = CALENDAR_30.map((topicId, idx) => {
+        const dayNum = idx + 1;
+        const topic = TOPICS_DATA.find(t => t.id === topicId) || TOPICS_DATA[0];
+        const checked = !!dayDone['day_' + dayNum];
         return `
-          <div class="bg-[var(--card)] border border-[var(--border)] rounded-xl p-4 flex flex-col justify-between gap-3 shadow-sm">
-            <div class="space-y-2">
-              <div class="flex items-center justify-between gap-2">
-                <div class="flex flex-wrap items-center gap-1.5">
-                  <span class="px-2 py-0.5 rounded text-xs font-semibold bg-[var(--secondary)] text-[var(--secondary-foreground)]">${item.pillar}</span>
-                  <span class="px-2 py-0.5 rounded text-xs font-medium border border-[var(--border)] text-[var(--muted-foreground)]">${item.format}</span>
-                </div>
-                <select onchange="changeIdeaStatus('${item.id}', this.value)"
-                  class="bg-[var(--background)] border rounded-md px-2 py-0.5 text-xs font-semibold cursor-pointer ${statusColor}">
-                  <option value="To Shoot" ${item.status === 'To Shoot' ? 'selected' : ''}>To Shoot</option>
-                  <option value="Shot" ${item.status === 'Shot' ? 'selected' : ''}>Shot</option>
-                  <option value="Published" ${item.status === 'Published' ? 'selected' : ''}>Published</option>
-                </select>
+          <div class="bg-[var(--card)] border ${checked ? 'border-[var(--success)]' : 'border-[var(--border)]'} rounded-xl p-3.5 flex flex-col justify-between gap-2.5 shadow-sm">
+            <div class="space-y-1.5">
+              <div class="flex items-center justify-between">
+                <span class="text-xs font-bold text-[var(--primary)]">Day ${dayNum}</span>
+                <label class="flex items-center gap-1 text-xs cursor-pointer">
+                  <input type="checkbox" ${checked ? 'checked' : ''} onchange="toggleDay(${dayNum})" class="accent-[var(--success)] w-3.5 h-3.5 cursor-pointer" />
+                  <span class="${checked ? 'text-[var(--success)] font-semibold' : 'text-[var(--muted-foreground)]'}">${checked ? 'Done' : 'To Do'}</span>
+                </label>
               </div>
-              <h3 class="text-sm sm:text-base font-bold leading-snug">${item.title}</h3>
-              <p class="text-xs text-[var(--foreground)] bg-[var(--background)] border border-[var(--card-border)] rounded-lg p-2.5">
-                ${item.hook}
-              </p>
-              <p class="text-xs text-[var(--muted-foreground)]">${item.why}</p>
+              <div class="flex flex-wrap gap-1">
+                <span class="px-1.5 py-0.5 rounded text-[11px] font-semibold bg-[var(--secondary)] text-[var(--secondary-foreground)]">${topic.pillar}</span>
+                <span class="px-1.5 py-0.5 rounded text-[11px] border border-[var(--border)] text-[var(--muted-foreground)]">${topic.format}</span>
+              </div>
+              <h3 class="text-xs font-bold leading-snug line-clamp-2 ${checked ? 'line-through text-[var(--muted-foreground)]' : ''}">${topic.title}</h3>
             </div>
-
-            <div class="flex items-center justify-between gap-2 pt-2 border-t border-[var(--card-border)]">
-              ${item.shotId
-                ? `<button onclick="openShotFromIdea('${item.shotId}')" class="px-3 py-1.5 rounded-lg text-xs font-semibold bg-[var(--primary)] text-[var(--primary-foreground)] hover:opacity-90 cursor-pointer">🎥 Open Shot Guide</button>`
-                : `<button onclick="sendToHookBuilder('${item.title.replace(/'/g, "\\'")}')" class="px-3 py-1.5 rounded-lg text-xs font-semibold border border-[var(--border)] hover:bg-[var(--background)] cursor-pointer">⚡ Visual Hooks</button>`
-              }
-              <button onclick="copyText('${(item.title + ' — ' + item.hook).replace(/'/g, "\\'")}', 'Idea Copied!')" class="px-2.5 py-1.5 rounded-lg text-xs text-[var(--muted-foreground)] hover:text-[var(--foreground)] cursor-pointer">
-                📋 Copy
-              </button>
-            </div>
+            <button onclick="openShot('${topic.id}')"
+              class="w-full py-1.5 rounded-lg text-xs font-semibold bg-[var(--background)] border border-[var(--border)] hover:border-[var(--primary)] hover:text-[var(--primary)] cursor-pointer transition">
+              🎥 Shoot This
+            </button>
           </div>
         `;
       }).join('');
     }
 
-    function changeIdeaStatus(id, status) {
-      const idx = ideas.findIndex(i => i.id === id);
-      if (idx !== -1) {
-        ideas[idx].status = status;
-        saveState();
-        updateStats();
-        renderIdeas();
-      }
-    }
-
-    function toggleAddForm() {
-      document.getElementById('add-idea-form').classList.toggle('hidden');
-    }
-
-    function addCustomIdea() {
-      const title = document.getElementById('new-title').value.trim();
-      const pillar = document.getElementById('new-pillar').value;
-      const format = document.getElementById('new-format').value;
-      if (!title) return showToast('Topic likhein pehle!');
-      ideas.unshift({
-        id: 'custom_' + Date.now(),
-        title,
-        pillar,
-        format,
-        hook: 'Visual: Problem area point karein + ❌ vs ✅ demo dikhayein',
-        why: 'Custom added by creator',
-        shotId: null,
-        status: 'To Shoot'
-      });
-      document.getElementById('new-title').value = '';
-      document.getElementById('add-idea-form').classList.add('hidden');
+    function toggleDay(dayNum) {
+      dayDone['day_' + dayNum] = !dayDone['day_' + dayNum];
       saveState();
-      updateStats();
-      renderIdeas();
-      showToast('Naya idea add ho gaya!');
+      render30DayCalendar();
     }
 
-    function openShotFromIdea(shotId) {
-      activeShotId = shotId;
+    function copy30DayPlan() {
+      const txt = CALENDAR_30.map((id, i) => {
+        const t = TOPICS_DATA.find(x => x.id === id) || TOPICS_DATA[0];
+        return `Day ${i + 1} [${t.pillar} - ${t.format}]: ${t.title}`;
+      }).join('\n');
+      copyText(txt, '30-Day Plan Copied!');
+    }
+
+    // ---------- SHOT GUIDES & 9:16 PREVIEW ----------
+    function openShot(id) {
+      activeShotId = id;
+      activeClipIdx = 0;
       switchTab('shots');
       renderShotList();
       renderActiveShot();
     }
 
-    function sendToHookBuilder(title) {
-      document.getElementById('hook-custom').value = title;
-      switchTab('hooks');
-      generateHooks();
-    }
-
     function renderShotList() {
-      document.getElementById('shot-count-label').textContent = SHOTS.length + ' guides';
-      document.getElementById('shot-list').innerHTML = SHOTS.map(s => {
+      const q = (document.getElementById('shot-search')?.value || '').trim().toLowerCase();
+      const list = TOPICS_DATA.filter(t => !q || (t.title + ' ' + t.pillar).toLowerCase().includes(q));
+      document.getElementById('shot-count-label').textContent = list.length + ' guides';
+
+      document.getElementById('shot-list').innerHTML = list.map(s => {
         const active = s.id === activeShotId;
         return `
           <button onclick="selectShot('${s.id}')"
-            class="w-full text-left p-3 rounded-lg border transition cursor-pointer ${
-              active
-                ? 'bg-[var(--background)] border-[var(--primary)]'
-                : 'bg-transparent border-[var(--card-border)] hover:bg-[var(--background)]'
+            class="w-full text-left p-2.5 rounded-lg border transition cursor-pointer ${
+              active ? 'bg-[var(--background)] border-[var(--primary)]' : 'bg-transparent border-[var(--card-border)] hover:bg-[var(--background)]'
             }">
-            <div class="flex items-center justify-between gap-2 mb-1">
-              <span class="text-xs font-semibold text-[var(--primary)]">${s.pillar}</span>
-              <span class="text-xs text-[var(--muted-foreground)]">${s.format}</span>
+            <div class="flex items-center justify-between gap-2 mb-0.5">
+              <span class="text-[11px] font-semibold text-[var(--primary)]">${s.pillar}</span>
+              <span class="text-[11px] text-[var(--muted-foreground)]">${s.format}</span>
             </div>
-            <div class="text-xs sm:text-sm font-bold line-clamp-2">${s.title}</div>
+            <div class="text-xs font-bold line-clamp-2">${s.title}</div>
           </button>
         `;
       }).join('');
@@ -1013,63 +975,103 @@
 
     function selectShot(id) {
       activeShotId = id;
+      activeClipIdx = 0;
       renderShotList();
       renderActiveShot();
     }
 
+    function selectClip(idx) {
+      activeClipIdx = idx;
+      renderActiveShot();
+    }
+
     function renderActiveShot() {
-      const s = SHOTS.find(x => x.id === activeShotId) || SHOTS[0];
+      const s = TOPICS_DATA.find(x => x.id === activeShotId) || TOPICS_DATA[0];
       document.getElementById('active-shot-pillar').textContent = s.pillar;
-      document.getElementById('active-shot-format').textContent = s.format;
-      document.getElementById('active-shot-music').textContent = s.musicVibe;
+      document.getElementById('active-shot-format').textContent = s.format + ' · ' + s.durationSec + 's';
+      document.getElementById('active-shot-music').textContent = s.music;
       document.getElementById('active-shot-title').textContent = s.title;
 
-      resetTimer(s.durationSec || 30);
+      resetTimer(s.durationSec || 25);
 
-      document.getElementById('shot-cards-box').innerHTML = s.steps.map(st => `
-        <div class="bg-[var(--background)] border border-[var(--card-border)] rounded-xl p-3.5 space-y-2">
-          <div class="flex flex-wrap items-center justify-between gap-2">
-            <span class="text-xs font-bold text-[var(--primary)]">[${st.time}] ${st.shotName}</span>
-            <span class="text-xs text-[var(--muted-foreground)]">📷 ${st.camera}</span>
-          </div>
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-2.5">
-            <div class="bg-[var(--card)] border border-[var(--card-border)] rounded-lg p-2.5">
-              <div class="text-xs font-semibold text-[var(--muted-foreground)] mb-1">🤸‍♀️ Camera ke Samne Kya Karna Hai:</div>
-              <p class="text-xs sm:text-sm leading-relaxed">${st.action}</p>
+      const steps = s.steps || [];
+      document.getElementById('shot-cards-box').innerHTML = steps.map((st, idx) => {
+        const isSel = idx === activeClipIdx;
+        return `
+          <div onclick="selectClip(${idx})"
+            class="cursor-pointer bg-[var(--background)] border ${isSel ? 'border-[var(--primary)] ring-1 ring-[var(--primary)]' : 'border-[var(--card-border)]'} rounded-xl p-3 space-y-2 transition">
+            <div class="flex flex-wrap items-center justify-between gap-2">
+              <span class="text-xs font-bold text-[var(--primary)]">[${st.time}] ${st.name}</span>
+              <span class="text-xs text-[var(--muted-foreground)]">📷 ${st.cam}</span>
             </div>
-            <div class="bg-[var(--card)] border border-[var(--primary)] rounded-lg p-2.5 flex flex-col justify-between gap-1.5">
-              <div>
-                <div class="text-xs font-semibold text-[var(--primary)] mb-1">🔤 Screen par Text Likhein:</div>
-                <p class="text-xs sm:text-sm font-bold whitespace-pre-line">${st.onScreenText}</p>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-2">
+              <div class="bg-[var(--card)] border border-[var(--card-border)] rounded-lg p-2.5 text-xs leading-relaxed">
+                <span class="font-semibold text-[var(--muted-foreground)] block mb-0.5">🤸‍♀️ Action:</span>
+                ${st.act}
               </div>
-              <button onclick="copyText(${JSON.stringify(st.onScreenText)}, 'Screen Text Copied!')"
-                class="self-end px-2 py-0.5 rounded text-xs border border-[var(--border)] text-[var(--muted-foreground)] hover:text-[var(--foreground)] cursor-pointer">
-                Copy Text
-              </button>
+              <div class="bg-[var(--card)] border border-[var(--primary)]/40 rounded-lg p-2.5 flex flex-col justify-between gap-1">
+                <div>
+                  <span class="font-semibold text-[var(--primary)] text-xs block mb-0.5">🔤 Screen Text:</span>
+                  <p class="text-xs font-bold whitespace-pre-line">${st.text}</p>
+                </div>
+                <button onclick="event.stopPropagation(); copyText(${JSON.stringify(st.text)}, 'Screen Text Copied!')"
+                  class="self-end px-2 py-0.5 rounded text-[11px] border border-[var(--border)] text-[var(--muted-foreground)] hover:text-[var(--foreground)] cursor-pointer">
+                  Copy
+                </button>
+              </div>
             </div>
           </div>
-        </div>
-      `).join('');
+        `;
+      }).join('');
 
-      document.getElementById('meta-title').textContent = s.seoTitle;
+      // Update 9:16 Safe-Zone Preview
+      const activeStep = steps[activeClipIdx] || steps[0];
+      if (activeStep) {
+        document.getElementById('preview-clip-badge').textContent = activeStep.name.split('—')[0].trim();
+        document.getElementById('preview-screen-text').textContent = activeStep.text;
+        document.getElementById('preview-camera-note').textContent = '📷 ' + activeStep.cam;
+        document.getElementById('preview-action-text').textContent = activeStep.act;
+      }
+      document.getElementById('preview-yt-title').textContent = s.title + ' #shorts';
+
+      document.getElementById('meta-title').textContent = s.title + ' #shorts #Nuyouth';
       document.getElementById('meta-tags').textContent = s.tags;
-      document.getElementById('meta-comment').textContent = s.pinnedComment;
+      document.getElementById('meta-comment').textContent = s.comment;
     }
 
     function copyShotSection(mode) {
-      const s = SHOTS.find(x => x.id === activeShotId) || SHOTS[0];
+      const s = TOPICS_DATA.find(x => x.id === activeShotId) || TOPICS_DATA[0];
       if (mode === 'all') {
-        const txt = `${s.title} (${s.musicVibe})\n\n` + s.steps.map(st =>
-          `[${st.time}] ${st.shotName}\nCamera: ${st.camera}\nAction: ${st.action}\nScreen Text: ${st.onScreenText}`
+        const txt = `${s.title} (${s.music})\n\n` + s.steps.map(st =>
+          `[${st.time}] ${st.name}\nCamera: ${st.cam}\nAction: ${st.act}\nScreen Text: ${st.text}`
         ).join('\n\n');
         copyText(txt, 'Shot Guide Copied!');
       } else if (mode === 'meta') {
-        copyText(`${s.seoTitle}\n\n${s.tags}`, 'Title + Tags Copied!');
+        copyText(`${s.title} #shorts\n\n${s.tags}`, 'Title + Tags Copied!');
       } else {
-        copyText(s.pinnedComment, 'Pinned Comment Copied!');
+        copyText(s.comment, 'Pinned Comment Copied!');
       }
     }
 
+    function renderChecklist() {
+      document.getElementById('viral-checklist').innerHTML = CHECKLIST_ITEMS.map(c => {
+        const checked = !!checklistState[c.id];
+        return `
+          <label class="flex items-start gap-2 cursor-pointer">
+            <input type="checkbox" ${checked ? 'checked' : ''} onchange="toggleCheck('${c.id}')" class="mt-0.5 accent-[var(--success)] w-3.5 h-3.5 cursor-pointer" />
+            <span class="${checked ? 'line-through text-[var(--muted-foreground)]' : 'text-[var(--foreground)]'}">${c.label}</span>
+          </label>
+        `;
+      }).join('');
+    }
+
+    function toggleCheck(id) {
+      checklistState[id] = !checklistState[id];
+      saveState();
+      renderChecklist();
+    }
+
+    // Timer
     function updateTimerUI() {
       const m = String(Math.floor(timerSeconds / 60)).padStart(2, '0');
       const s = String(timerSeconds % 60).padStart(2, '0');
@@ -1083,8 +1085,8 @@
         timerInterval = null;
         btn.textContent = 'Start';
       } else {
-        const s = SHOTS.find(x => x.id === activeShotId) || SHOTS[0];
-        if (timerSeconds <= 0) timerSeconds = s.durationSec || 30;
+        const s = TOPICS_DATA.find(x => x.id === activeShotId) || TOPICS_DATA[0];
+        if (timerSeconds <= 0) timerSeconds = s.durationSec || 25;
         btn.textContent = 'Pause';
         timerInterval = setInterval(() => {
           timerSeconds--;
@@ -1093,7 +1095,7 @@
             clearInterval(timerInterval);
             timerInterval = null;
             btn.textContent = 'Start';
-            showToast('⏱️ Shot Time Complete!');
+            showToast('⏱️ Shot Complete!');
           }
         }, 1000);
       }
@@ -1102,52 +1104,131 @@
     function resetTimer(customSec) {
       clearInterval(timerInterval);
       timerInterval = null;
-      const s = SHOTS.find(x => x.id === activeShotId) || SHOTS[0];
-      timerSeconds = typeof customSec === 'number' ? customSec : (s.durationSec || 30);
+      const s = TOPICS_DATA.find(x => x.id === activeShotId) || TOPICS_DATA[0];
+      timerSeconds = typeof customSec === 'number' ? customSec : (s.durationSec || 25);
       document.getElementById('timer-btn').textContent = 'Start';
       updateTimerUI();
     }
 
-    const TOPIC_VISUALS = {
-      belly: {
-        name: 'Lower Belly Pooch / Pelvic Tilt',
-        hinglish: {
-          wrongRight: { visual: 'Pehle arched back dikha kar ❌ gesture karein, phir pelvic tuck karke ✅ dikhayein.', text: 'Crunches ❌ vs Pelvic Tuck ✅\nFix Lower Belly Pooch' },
-          test: { visual: 'Deewar se chipak kar lower back ke gap mein mutthi daal kar dikhayein.', text: '10-Sec Wall Test 😳\nCheck Your Posture Gap!' },
-          count: { visual: '3 fingers dikhayein aur sidha mat par 1-2-3 clips fast cut karein.', text: '3 Daily Moves for Flat Lower Belly 🧘‍♀️\n(15 Reps Each)' },
-          arrow: { visual: 'Tight hip area par haath se tap karein aur arrow sticker lagayein.', text: 'Pet Charbi Nahi, Tight Hips Hain! 👇\nStretch This Daily' },
-          beforeAfter: { visual: 'Slouched relaxed belly ❌ -> Core-engaged tall posture ✅.', text: 'Same Body, Different Posture ✨\nTry for 14 Days' }
-        },
-        hindi: {
-          wrongRight: { visual: 'Pehle galat posture dikha kar ❌ gesture karein, phir sahi posture ✅ dikhayein.', text: 'सिर्फ क्रंचेस ❌ | सही पोस्चर ✅\nनिचला पेट अंदर करें' },
-          test: { visual: 'Deewar ke sahare khade ho kar kamar ke peeche haath daal kar dikhayein.', text: '10 सेकंड वॉल टेस्ट 😳\nअपना पोस्चर चेक करें' },
-          count: { visual: '3 ungliyan dikha kar 3 exercises fast beat par shoot karein.', text: 'रोज़ सिर्फ 3 योगासन 🧘‍♀️\n(15 बार हर एक्सरसाइज)' },
-          arrow: { visual: 'Hip flexor par haath rakh kar tap karein.', text: 'पेट बाहर क्यों है? 👇\nये स्ट्रेच रोज़ करें' },
-          beforeAfter: { visual: 'Jhuka posture ❌ -> Seedha posture ✅.', text: '14 दिन में फर्क देखें ✨\nआज से शुरू करें' }
-        }
-      },
-      neck: {
-        name: 'Neck Hump',
-        hinglish: {
-          wrongRight: { visual: 'Phone dekhte hue jhuki gardan ❌ -> Chin tuck karke seedhi gardan ✅.', text: 'Mobile Neck ❌ vs Chin Tuck ✅\nFix Neck Hump' },
-          test: { visual: 'Deewar se peeth lagayein aur sir deewar se touch karke dikhayein.', text: 'Wall Check 👀\nCan Your Head Touch Wall?' },
-          count: { visual: '3 fast wall & mat clips (Chin Tuck, Cobra, Wall Angels).', text: '3 Fixes for Neck Hump 🧘‍♀️\n(2 Mins Daily)' },
-          arrow: { visual: 'Gardan ke peeche ubhar par haath rakh kar circle sticker lagayein.', text: 'Remove Neck Hump Naturally 👇\nSave This Routine' },
-          beforeAfter: { visual: 'Forward head ❌ -> Aligned ear-over-shoulder ✅.', text: 'Fix Tech Neck in 14 Days ✨\nNo Equipment' }
-        },
-        hindi: {
-          wrongRight: { visual: 'Phone dekhte hue jhuki gardan ❌ -> Seedhi gardan ✅.', text: 'गलत गर्दन पोस्चर ❌ | चिन टक ✅' },
-          test: { visual: 'Deewar se sir chipka kar check dikhayein.', text: 'दीवार टेस्ट 👀\nक्या आपका सिर दीवार छूता है?' },
-          count: { visual: '3 asaan neck stretches beat par dikhayein.', text: 'गर्दन का उभार कम करें 🧘‍♀️\nरोज़ 2 मिनट' },
-          arrow: { visual: 'Gardan ke peeche point karein.', text: 'गर्दन और पीठ दर्द से राहत 👇' },
-          beforeAfter: { visual: 'Jhuki gardan ❌ -> Seedhi spine ✅.', text: '14 दिन में सही पोस्चर ✨' }
-        }
-      }
-    };
+    // ---------- IDEA BANK ----------
+    function renderPillarChips() {
+      document.getElementById('pillar-chips').innerHTML = PILLARS.map(p => {
+        const active = selectedPillar === p.id;
+        return `<button onclick="setPillar('${p.id.replace(/'/g, "\\'")}')"
+          class="px-3 py-1 rounded-full text-xs font-medium transition cursor-pointer ${
+            active ? 'bg-[var(--primary)] text-[var(--primary-foreground)]' : 'bg-[var(--background)] border border-[var(--border)] text-[var(--muted-foreground)]'
+          }">${p.label}</button>`;
+      }).join('');
+    }
 
-    function getTopicHookData(key, custom) {
-      if (!custom && TOPIC_VISUALS[key]) return TOPIC_VISUALS[key];
+    function setPillar(id) {
+      selectedPillar = id;
+      renderPillarChips();
+      renderIdeas();
+    }
+
+    function renderIdeas() {
+      const q = document.getElementById('search-input').value.trim().toLowerCase();
+      const fmt = document.getElementById('filter-format').value;
+      const stFilter = document.getElementById('filter-status').value;
+
+      const filtered = TOPICS_DATA.filter(item => {
+        const st = topicStatus[item.id] || 'To Shoot';
+        if (selectedPillar !== 'all' && item.pillar !== selectedPillar) return false;
+        if (fmt !== 'all' && item.format !== fmt) return false;
+        if (stFilter !== 'all' && st !== stFilter) return false;
+        if (q && !(item.title + ' ' + item.hook + ' ' + item.pillar + ' ' + item.why).toLowerCase().includes(q)) return false;
+        return true;
+      });
+
+      const grid = document.getElementById('ideas-grid');
+      if (!filtered.length) {
+        grid.innerHTML = `<div class="col-span-full text-center py-10 bg-[var(--card)] border border-[var(--border)] rounded-xl text-sm text-[var(--muted-foreground)]">Koi matching topic nahi mila.</div>`;
+        return;
+      }
+
+      grid.innerHTML = filtered.map(item => {
+        const st = topicStatus[item.id] || 'To Shoot';
+        const statusColor = st === 'Published' ? 'text-[var(--success)] border-[var(--success)]' : st === 'Shot' ? 'text-[var(--warning)] border-[var(--warning)]' : 'text-[var(--muted-foreground)] border-[var(--border)]';
+        return `
+          <div class="bg-[var(--card)] border border-[var(--border)] rounded-xl p-4 flex flex-col justify-between gap-3 shadow-sm">
+            <div class="space-y-2">
+              <div class="flex items-center justify-between gap-2">
+                <div class="flex flex-wrap gap-1.5">
+                  <span class="px-2 py-0.5 rounded text-xs font-semibold bg-[var(--secondary)] text-[var(--secondary-foreground)]">${item.pillar}</span>
+                  <span class="px-2 py-0.5 rounded text-xs border border-[var(--border)] text-[var(--muted-foreground)]">${item.format}</span>
+                </div>
+                <select onchange="changeIdeaStatus('${item.id}', this.value)"
+                  class="bg-[var(--background)] border rounded-md px-2 py-0.5 text-xs font-semibold cursor-pointer ${statusColor}">
+                  <option value="To Shoot" ${st === 'To Shoot' ? 'selected' : ''}>To Shoot</option>
+                  <option value="Shot" ${st === 'Shot' ? 'selected' : ''}>Shot</option>
+                  <option value="Published" ${st === 'Published' ? 'selected' : ''}>Published</option>
+                </select>
+              </div>
+              <h3 class="text-sm sm:text-base font-bold leading-snug">${item.title}</h3>
+              <p class="text-xs bg-[var(--background)] border border-[var(--card-border)] rounded-lg p-2.5">${item.hook}</p>
+              <p class="text-xs text-[var(--muted-foreground)]">${item.why}</p>
+            </div>
+            <div class="flex items-center justify-between gap-2 pt-2 border-t border-[var(--card-border)]">
+              <button onclick="openShot('${item.id}')" class="px-3 py-1.5 rounded-lg text-xs font-semibold bg-[var(--primary)] text-[var(--primary-foreground)] hover:opacity-90 cursor-pointer">
+                🎥 Open Shot Guide
+              </button>
+              <button onclick="copyText(${JSON.stringify(item.title + ' — ' + item.hook)}, 'Idea Copied!')" class="px-2.5 py-1.5 rounded-lg text-xs text-[var(--muted-foreground)] hover:text-[var(--foreground)] cursor-pointer">
+                📋 Copy
+              </button>
+            </div>
+          </div>
+        `;
+      }).join('');
+    }
+
+    function changeIdeaStatus(id, status) {
+      topicStatus[id] = status;
+      saveState();
+      updateStats();
+      renderIdeas();
+    }
+
+    function toggleAddForm() {
+      document.getElementById('add-idea-form').classList.toggle('hidden');
+    }
+
+    function addCustomIdea() {
+      const title = document.getElementById('new-title').value.trim();
+      const pillar = document.getElementById('new-pillar').value;
+      const format = document.getElementById('new-format').value;
+      if (!title) return showToast('Topic likhein pehle!');
+      const newId = 'custom_' + Date.now();
+      TOPICS_DATA.unshift({
+        id: newId, title, pillar, format, durationSec: 25,
+        hook: 'Visual: Problem area point karein + ❌ vs ✅ demo dikhayein',
+        why: 'Custom added by creator',
+        music: '🎵 Trending Acoustic / Wellness Beat',
+        tags: '#Nuyouth #YogaShorts #Wellness #HindiFitness',
+        comment: 'Aapko ye routine kaisa laga? Comment mein batayein 👇',
+        steps: [
+          { time: '0:00–0:04', name: 'HOOK', cam: 'Front/side medium', act: 'Problem area point karke ❌ vs ✅ dikhayein.', text: title + '\nWatch Till End 👇' },
+          { time: '0:04–0:15', name: 'CLIP 1 — Main Exercise', cam: 'Side mat angle', act: 'Slow controlled reps dikhayein.', text: '1. Main Pose (30 Sec)' },
+          { time: '0:15–0:25', name: 'CLIP 2 — Second Pose + CTA', cam: 'Front smile', act: 'Second pose + subscribe arrow.', text: '2. Hold 20 Sec\nSave & Subscribe ✅' }
+        ]
+      });
+      document.getElementById('new-title').value = '';
+      document.getElementById('add-idea-form').classList.add('hidden');
+      saveState();
+      updateStats();
+      renderIdeas();
+      renderShotList();
+      showToast('Naya topic + Shot Guide add ho gaya!');
+    }
+
+    // ---------- VISUAL HOOK BUILDER ----------
+    function generateHooks() {
+      const key = document.getElementById('hook-topic').value;
+      const custom = document.getElementById('hook-custom').value.trim();
+      const lang = document.getElementById('hook-lang').value;
       const label = custom || {
+        belly: 'Lower Belly Pooch / Pelvic Tilt',
+        neck: 'Neck Hump',
         digestion: 'Gas, Bloating & Kabz',
         pcos: 'PCOD & Hormonal Balance',
         knee: 'Knee Pain (Ghutno ka Dard)',
@@ -1156,106 +1237,48 @@
         pelvic: 'Pelvic Floor & Core'
       }[key] || 'Wellness Yoga';
 
-      return {
-        name: label,
-        hinglish: {
-          wrongRight: { visual: 'Pehle common mistake dikha kar ❌ gesture karein, phir safe yoga pose ✅.', text: `Stop Doing This ❌\nDo This for ${label} ✅` },
-          test: { visual: 'Affected area par point karke 2-second visual check dikhayein.', text: `Struggling with ${label}? 👀\nTry This Daily` },
-          count: { visual: '3 fingers dikhayein + 3 short exercise clips with rep count.', text: `3 Easy Moves for ${label} 🧘‍♀️\n30 Sec Each` },
-          arrow: { visual: 'Body area par tap karein + breathing inhale/exhale arrow lagayein.', text: `Natural Relief for ${label} 👇\nSave This Video` },
-          beforeAfter: { visual: 'Stiff / tight pose ❌ -> Relaxed, open, smiling pose ✅.', text: `Feel Better in 7 Days ✨\n${label} Routine` }
-        },
-        hindi: {
-          wrongRight: { visual: 'Galat movement ❌ -> Sahi slow movement ✅.', text: `ये गलती न करें ❌ | सही तरीका ✅\n(${label})` },
-          test: { visual: 'Problem area par haath rakh kar point karein.', text: `${label} से परेशान हैं? 👀\nरोज़ ये करें` },
-          count: { visual: '3 exercises ke crisp clips + timer badge.', text: `${label} के लिए 3 आसान योग 🧘‍♀️\nरोज़ 2 मिनट` },
-          arrow: { visual: 'Slow breathing aur stretch direction arrow dikhayein.', text: `बिना दवाई आराम 👇\nवीडियो सेव करें` },
-          beforeAfter: { visual: 'Stiff posture ❌ -> Relaxed posture ✅.', text: `7 दिन लगातार करें ✨\n@Nuyouth` }
-        }
-      };
-    }
-
-    function generateHooks() {
-      const key = document.getElementById('hook-topic').value;
-      const custom = document.getElementById('hook-custom').value.trim();
-      const lang = document.getElementById('hook-lang').value;
-      const data = getTopicHookData(key, custom);
-      const set = data[lang];
-
-      const cards = [
-        { label: '1. ❌ Wrong vs ✅ Right (Sabse Viral Silent Hook)', ...set.wrongRight },
-        { label: '2. 👀 Visual Self-Check Hook', ...set.test },
-        { label: '3. 3️⃣ 3-Moves Beat-Sync Hook', ...set.count },
-        { label: '4. 👇 Tap & Point Problem Area Hook', ...set.arrow },
-        { label: '5. ✨ Transformation / Posture Switch Hook', ...set.beforeAfter }
+      const cards = lang === 'hindi' ? [
+        { label: '1. ❌ Galat vs ✅ Sahi', visual: 'Galat pose ❌ -> Sahi pose ✅ transition.', text: `ये गलती न करें ❌ | सही तरीका ✅\n(${label})` },
+        { label: '2. 👀 10-Sec Self-Check', visual: 'Deewar ya mirror ke paas check dikhayein.', text: `${label} से परेशान हैं? 👀\n10 सेकंड में चेक करें` },
+        { label: '3. 3️⃣ 3-Moves Beat-Sync', visual: '3 fingers dikha kar 3 fast clips.', text: `${label} के लिए 3 आसान योग 🧘‍♀️\nरोज़ 2 मिनट` },
+        { label: '4. 👇 Tap & Point Hook', visual: 'Problem area par tap + breathing arrow.', text: `बिना दवाई आराम 👇\nवीडियो सेव करें` },
+        { label: '5. ✨ 14-Day Switch', visual: 'Stiff posture ❌ -> Relaxed aligned ✅.', text: `14 दिन लगातार करें ✨\n@Nuyouth` }
+      ] : [
+        { label: '1. ❌ Wrong vs ✅ Right (Sabse Viral)', visual: 'Common mistake ❌ -> Safe yoga pose ✅.', text: `Stop Doing This ❌\nDo This for ${label} ✅` },
+        { label: '2. 👀 10-Sec Visual Self-Check', visual: 'Wall ya mirror check dikhayein.', text: `Struggling with ${label}? 👀\nCheck in 10 Seconds` },
+        { label: '3. 3️⃣ 3-Moves Beat-Sync', visual: '3 fingers + 3 crisp exercise clips.', text: `3 Daily Moves for ${label} 🧘‍♀️\n30 Sec Each` },
+        { label: '4. 👇 Tap & Point Problem Area', visual: 'Affected muscle par tap + arrow sticker.', text: `Natural Fix for ${label} 👇\nSave This Routine` },
+        { label: '5. ✨ Posture / Relief Switch', visual: 'Tight/slouched ❌ -> Open & smiling ✅.', text: `Try for 14 Days ✨\n${label} Fix` }
       ];
 
       document.getElementById('hooks-output').innerHTML = cards.map(c => `
         <div class="bg-[var(--background)] border border-[var(--card-border)] rounded-lg p-3.5 space-y-2">
           <div class="flex items-center justify-between gap-2">
             <span class="text-xs font-bold text-[var(--primary)]">${c.label}</span>
-            <button onclick="copyText(${JSON.stringify('Visual: ' + c.visual + '\nScreen Text: ' + c.text)}, 'Visual Hook Copied!')"
-              class="px-2.5 py-1 rounded text-xs font-semibold bg-[var(--card)] border border-[var(--border)] hover:opacity-85 cursor-pointer">
-              📋 Copy
-            </button>
+            <button onclick="copyText(${JSON.stringify('Visual: ' + c.visual + '\nScreen Text: ' + c.text)}, 'Hook Copied!')"
+              class="px-2.5 py-1 rounded text-xs font-semibold bg-[var(--card)] border border-[var(--border)] cursor-pointer">📋 Copy</button>
           </div>
-          <div class="text-xs text-[var(--muted-foreground)]"><span class="font-semibold text-[var(--foreground)]">Camera Action:</span> ${c.visual}</div>
+          <div class="text-xs text-[var(--muted-foreground)]"><span class="font-semibold text-[var(--foreground)]">Camera:</span> ${c.visual}</div>
           <div class="bg-[var(--card)] border border-[var(--card-border)] rounded px-3 py-2 text-xs sm:text-sm font-bold whitespace-pre-line">${c.text}</div>
         </div>
       `).join('');
     }
 
-    function renderCalendar() {
-      document.getElementById('calendar-grid').innerHTML = WEEKLY_PLAN.map(item => {
-        const checked = !!weekChecks[item.day];
-        return `
-          <div class="bg-[var(--card)] border ${checked ? 'border-[var(--success)]' : 'border-[var(--border)]'} rounded-xl p-4 flex flex-col justify-between gap-3">
-            <div class="space-y-2">
-              <div class="flex items-center justify-between">
-                <span class="text-sm font-bold">${item.day}</span>
-                <label class="flex items-center gap-1.5 text-xs font-semibold cursor-pointer">
-                  <input type="checkbox" ${checked ? 'checked' : ''} onchange="toggleDayCheck('${item.day}')" class="accent-[var(--success)] w-4 h-4 cursor-pointer" />
-                  <span class="${checked ? 'text-[var(--success)]' : 'text-[var(--muted-foreground)]'}">${checked ? 'Done' : 'Pending'}</span>
-                </label>
-              </div>
-              <div class="flex flex-wrap gap-1.5">
-                <span class="px-2 py-0.5 rounded text-xs font-semibold bg-[var(--secondary)] text-[var(--secondary-foreground)]">${item.badge}</span>
-                <span class="px-2 py-0.5 rounded text-xs border border-[var(--border)] text-[var(--muted-foreground)]">${item.format}</span>
-              </div>
-              <h3 class="text-xs sm:text-sm font-semibold leading-snug ${checked ? 'line-through text-[var(--muted-foreground)]' : ''}">${item.topic}</h3>
-            </div>
-            <div class="text-xs text-[var(--muted-foreground)] pt-2 border-t border-[var(--card-border)]">
-              🎯 Goal: ${item.goal}
-            </div>
-          </div>
-        `;
-      }).join('');
-    }
-
-    function toggleDayCheck(day) {
-      weekChecks[day] = !weekChecks[day];
-      saveState();
-      renderCalendar();
-    }
-
-    function copyWeeklyPlan() {
-      const txt = WEEKLY_PLAN.map(d => `${d.day} [${d.format} - ${d.badge}]: ${d.topic} (Goal: ${d.goal})`).join('\n');
-      copyText(txt, '7-Day Plan Copied!');
-    }
-
+    // ---------- INIT ----------
     loadState();
     document.getElementById('search-input').addEventListener('input', renderIdeas);
     document.getElementById('filter-format').addEventListener('change', renderIdeas);
     document.getElementById('filter-status').addEventListener('change', renderIdeas);
 
-    switchTab('ideas');
+    switchTab('calendar');
     updateStats();
+    render30DayCalendar();
     renderPillarChips();
     renderIdeas();
     renderShotList();
     renderActiveShot();
+    renderChecklist();
     generateHooks();
-    renderCalendar();
   </script>
 </body>
 </html>
