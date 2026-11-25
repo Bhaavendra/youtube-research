@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>NuYouth Content Studio v2 — Silent Video Planner (@Nuyouthishwarisahu)</title>
+  <title>NuYouth Content Studio v2 — Supabase Cloud Sync (@Nuyouthishwarisahu)</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
     :root {
@@ -62,7 +62,7 @@
       <div class="space-y-1">
         <div class="flex flex-wrap items-center gap-2">
           <span class="px-2.5 py-0.5 rounded-full text-xs font-semibold bg-[var(--primary)] text-[var(--primary-foreground)]">
-            NuYouth Studio Pro · No-Talking Edition
+            NuYouth Studio Pro · Cloud Sync
           </span>
           <a href="https://www.youtube.com/@Nuyouthishwarisahu" target="_blank" rel="noopener"
              class="text-xs text-[var(--link)] hover:underline font-medium">
@@ -70,14 +70,14 @@
           </a>
         </div>
         <h1 class="text-xl sm:text-2xl font-bold tracking-tight">
-          25+ Ready Silent Shot Guides, 9:16 Safe-Zone Preview &amp; 30-Day Calendar
+          25+ Ready Silent Shot Guides, 9:16 Preview &amp; 30-Day Calendar
         </h1>
         <p class="text-xs sm:text-sm text-[var(--muted-foreground)]">
-          Har topic ka complete <strong>Camera Angle + Pose Action + Screen Text + 9:16 Phone Preview + Viral Checklist</strong> ek jagah.
+          Har topic ka complete <strong>Camera Angle + Pose Action + Screen Text + 9:16 Phone Preview</strong> — Supabase se phone &amp; laptop sync ke saath.
         </p>
       </div>
 
-      <div class="flex flex-wrap items-center gap-3 shrink-0">
+      <div class="flex flex-wrap items-center gap-2.5 shrink-0">
         <div class="grid grid-cols-3 gap-2">
           <div class="bg-[var(--background)] border border-[var(--card-border)] rounded-lg px-3 py-2 text-center">
             <div id="stat-total" class="text-lg font-bold tabular-nums">0</div>
@@ -85,13 +85,17 @@
           </div>
           <div class="bg-[var(--background)] border border-[var(--card-border)] rounded-lg px-3 py-2 text-center">
             <div id="stat-scripts" class="text-lg font-bold tabular-nums text-[var(--primary)]">0</div>
-            <div class="text-xs text-[var(--muted-foreground)]">Shot Guides</div>
+            <div class="text-xs text-[var(--muted-foreground)]">Guides</div>
           </div>
           <div class="bg-[var(--background)] border border-[var(--card-border)] rounded-lg px-3 py-2 text-center">
             <div id="stat-done" class="text-lg font-bold tabular-nums text-[var(--success)]">0</div>
-            <div class="text-xs text-[var(--muted-foreground)]">Shot / Done</div>
+            <div class="text-xs text-[var(--muted-foreground)]">Done</div>
           </div>
         </div>
+        <button onclick="openSyncModal()" id="sync-btn"
+          class="px-3 py-2 rounded-lg text-xs font-semibold border border-[var(--border)] bg-[var(--background)] hover:border-[var(--primary)] cursor-pointer">
+          ☁️ Connect Supabase
+        </button>
         <button onclick="toggleTheme()" id="theme-btn"
           class="px-3 py-2 rounded-lg text-xs font-semibold border border-[var(--border)] bg-[var(--background)] hover:opacity-85 cursor-pointer">
           🌙 Dark
@@ -147,11 +151,10 @@
 
     <!-- TAB 2: SHOT GUIDES & LIVE 9:16 SAFE-ZONE PREVIEW -->
     <section id="tab-shots" class="hidden grid grid-cols-1 xl:grid-cols-12 gap-4">
-      <!-- Left: All 25 Shot Guides List -->
       <div class="xl:col-span-3 bg-[var(--card)] border border-[var(--border)] rounded-xl p-3.5 space-y-2.5 max-h-[820px] flex flex-col">
         <div class="space-y-2 pb-2 border-b border-[var(--card-border)]">
           <div class="flex items-center justify-between">
-            <h2 class="text-sm font-bold">All 25 Shot Guides</h2>
+            <h2 class="text-sm font-bold">All 25+ Shot Guides</h2>
             <span class="text-xs text-[var(--muted-foreground)]" id="shot-count-label">25 guides</span>
           </div>
           <input id="shot-search" type="text" oninput="renderShotList()" placeholder="Filter shot guide..."
@@ -160,7 +163,6 @@
         <div id="shot-list" class="space-y-1.5 overflow-y-auto pr-1 flex-1"></div>
       </div>
 
-      <!-- Middle: Active Visual Shot Breakdown + Checklist -->
       <div class="xl:col-span-6 space-y-4">
         <div class="bg-[var(--card)] border border-[var(--border)] rounded-xl p-4 sm:p-5 space-y-4">
           <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-3 border-b border-[var(--card-border)]">
@@ -173,7 +175,6 @@
               <div id="active-shot-music" class="text-xs text-[var(--primary)] font-medium mt-0.5"></div>
             </div>
 
-            <!-- Shoot Timer -->
             <div class="flex items-center gap-1.5 bg-[var(--background)] border border-[var(--border)] rounded-lg px-2.5 py-1.5 shrink-0">
               <span class="text-xs">⏱️</span>
               <span id="timer-display" class="font-mono text-sm font-bold tabular-nums w-11 text-center">00:28</span>
@@ -183,7 +184,7 @@
           </div>
 
           <div class="flex flex-wrap items-center justify-between gap-2 bg-[var(--background)] border border-[var(--card-border)] rounded-lg px-3 py-2">
-            <span class="text-xs text-[var(--muted-foreground)]">👆 Kisi bhi clip par click karein right side Phone Preview dekhne ke liye</span>
+            <span class="text-xs text-[var(--muted-foreground)]">👆 Kisi bhi clip par click karein Phone Preview dekhne ke liye</span>
             <div class="flex flex-wrap gap-2">
               <button onclick="copyShotSection('all')" class="px-2.5 py-1 rounded text-xs font-semibold bg-[var(--secondary)] text-[var(--secondary-foreground)] cursor-pointer">
                 📋 Copy Guide
@@ -194,10 +195,19 @@
             </div>
           </div>
 
-          <!-- Shot Cards -->
-          <div id="shot-cards-box" class="space-y-2.5 max-h-[430px] overflow-y-auto pr-1"></div>
+          <div id="shot-cards-box" class="space-y-2.5 max-h-[400px] overflow-y-auto pr-1"></div>
 
-          <!-- SEO Title, Hashtags & Pinned Comment -->
+          <!-- Creator Notes (Synced to Supabase) -->
+          <div class="bg-[var(--background)] border border-[var(--card-border)] rounded-xl p-3 space-y-1.5">
+            <div class="flex items-center justify-between">
+              <label for="topic-note" class="text-xs font-semibold text-[var(--muted-foreground)]">📝 Personal Shoot Notes (Cloud Synced)</label>
+              <span id="note-saved-hint" class="text-[11px] text-[var(--muted-foreground)]">Auto-saves</span>
+            </div>
+            <textarea id="topic-note" rows="2" oninput="saveCurrentNote(this.value)"
+              placeholder="Yahan apni shoot timing, outfit, music link ya yaad rakhne wali baat likhein..."
+              class="w-full bg-[var(--card)] border border-[var(--border)] rounded-lg px-2.5 py-1.5 text-xs text-[var(--foreground)] placeholder-[var(--placeholder)] focus:outline-none focus:ring-1 focus:ring-[var(--primary)]"></textarea>
+          </div>
+
           <div class="bg-[var(--background)] border border-[var(--card-border)] rounded-xl p-3.5 space-y-2">
             <div class="flex items-center justify-between">
               <span class="text-xs font-semibold text-[var(--muted-foreground)]">YouTube Title &amp; Pinned Comment</span>
@@ -212,7 +222,6 @@
         </div>
       </div>
 
-      <!-- Right: Live 9:16 YouTube Shorts Safe-Zone Preview + Viral Checklist -->
       <div class="xl:col-span-3 space-y-4">
         <div class="bg-[var(--card)] border border-[var(--border)] rounded-xl p-4 space-y-3">
           <div class="flex items-center justify-between">
@@ -220,9 +229,7 @@
             <span id="preview-clip-badge" class="text-xs font-semibold text-[var(--primary)]">Hook</span>
           </div>
 
-          <!-- Phone Frame -->
           <div class="mx-auto w-full max-w-[230px] aspect-[9/16] rounded-2xl border-4 border-[var(--border)] bg-gradient-to-b from-[#23332C] to-[#141715] text-white relative overflow-hidden p-3 flex flex-col justify-between shadow-md">
-            <!-- Top Safe Zone Text -->
             <div class="mt-4 mx-auto w-[92%] text-center space-y-1.5 z-10">
               <div id="preview-screen-text" class="bg-white/95 text-[#141715] rounded-lg px-2.5 py-2 text-xs font-extrabold leading-snug shadow whitespace-pre-line">
                 Fat Belly ❌ vs Posture Belly ✅
@@ -232,20 +239,17 @@
               </div>
             </div>
 
-            <!-- Middle Subject Silhouette Cue -->
             <div class="my-auto text-center px-2 space-y-1 opacity-90">
               <div class="text-2xl">🧘‍♀️</div>
               <p id="preview-action-text" class="text-[11px] text-gray-200 leading-tight line-clamp-2"></p>
             </div>
 
-            <!-- Right YouTube UI Ghost Icons (Avoid Zone) -->
             <div class="absolute right-2 bottom-16 flex flex-col items-center gap-2.5 opacity-45 text-[10px]">
               <div>👍</div>
               <div>💬</div>
               <div>↗️</div>
             </div>
 
-            <!-- Bottom YouTube UI Ghost Title (Avoid Zone) -->
             <div class="border-t border-white/15 pt-2 pr-7 opacity-60 space-y-1">
               <div class="flex items-center gap-1.5">
                 <div class="w-4 h-4 rounded-full bg-emerald-400"></div>
@@ -260,7 +264,6 @@
           </p>
         </div>
 
-        <!-- Pre-Upload Viral Checklist -->
         <div class="bg-[var(--card)] border border-[var(--border)] rounded-xl p-4 space-y-2.5">
           <h3 class="text-sm font-bold">✅ Upload Karne Se Pehle Check</h3>
           <div id="viral-checklist" class="space-y-2 text-xs"></div>
@@ -423,6 +426,81 @@
 
   </div>
 
+  <!-- SUPABASE CLOUD SYNC MODAL -->
+  <div id="sync-modal" class="fixed inset-0 z-50 hidden bg-black/50 flex items-center justify-center p-4">
+    <div class="bg-[var(--card)] border border-[var(--border)] rounded-2xl max-w-lg w-full p-5 space-y-4 shadow-xl max-h-[92vh] overflow-y-auto">
+      <div class="flex items-center justify-between border-b border-[var(--card-border)] pb-3">
+        <div>
+          <h2 class="text-base font-bold">☁️ Supabase Cloud Database Sync</h2>
+          <p class="text-xs text-[var(--muted-foreground)]">Phone aur laptop dono par ek saath data sync rakhein</p>
+        </div>
+        <button onclick="closeSyncModal()" class="text-sm px-2 py-1 rounded border border-[var(--border)] cursor-pointer">✕</button>
+      </div>
+
+      <!-- Step 1: Copy SQL -->
+      <div class="bg-[var(--background)] border border-[var(--card-border)] rounded-xl p-3 space-y-2">
+        <div class="flex items-center justify-between">
+          <span class="text-xs font-bold text-[var(--primary)]">Step 1: Supabase SQL Editor mein ye run karein (Sirf 1 baar)</span>
+          <button onclick="copySupabaseSQL()" class="px-2.5 py-1 rounded text-xs font-semibold bg-[var(--secondary)] text-[var(--secondary-foreground)] cursor-pointer">
+            📋 Copy SQL
+          </button>
+        </div>
+        <pre class="text-[11px] overflow-x-auto text-[var(--muted-foreground)] leading-relaxed">CREATE TABLE IF NOT EXISTS public.nuyouth_workspace (
+  workspace_key TEXT PRIMARY KEY,
+  topic_status JSONB NOT NULL DEFAULT '{}'::jsonb,
+  day_done JSONB NOT NULL DEFAULT '{}'::jsonb,
+  checklist_state JSONB NOT NULL DEFAULT '{}'::jsonb,
+  custom_topics JSONB NOT NULL DEFAULT '[]'::jsonb,
+  notes JSONB NOT NULL DEFAULT '{}'::jsonb,
+  updated_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
+);
+ALTER TABLE public.nuyouth_workspace ENABLE ROW LEVEL SECURITY;
+DROP POLICY IF EXISTS "Allow public workspace access" ON public.nuyouth_workspace;
+CREATE POLICY "Allow public workspace access" ON public.nuyouth_workspace
+  FOR ALL TO anon, authenticated USING (true) WITH CHECK (true);</pre>
+      </div>
+
+      <!-- Step 2: Credentials -->
+      <div class="space-y-3">
+        <div class="text-xs font-bold text-[var(--primary)]">Step 2: Project Settings → API se details paste karein</div>
+        <div>
+          <label class="block text-xs font-semibold text-[var(--muted-foreground)] mb-1">Supabase Project URL</label>
+          <input id="sb-url" type="url" placeholder="https://xxxxxxxxxxxx.supabase.co"
+            class="w-full bg-[var(--background)] border border-[var(--border)] rounded-lg px-3 py-2 text-xs sm:text-sm" />
+        </div>
+        <div>
+          <label class="block text-xs font-semibold text-[var(--muted-foreground)] mb-1">Supabase Anon Public Key</label>
+          <input id="sb-key" type="password" placeholder="eyJhbGciOiJIUzI1NiIsInR5cCI6..."
+            class="w-full bg-[var(--background)] border border-[var(--border)] rounded-lg px-3 py-2 text-xs sm:text-sm" />
+        </div>
+        <div>
+          <label class="block text-xs font-semibold text-[var(--muted-foreground)] mb-1">Private Sync Code (Same code phone &amp; laptop mein daalein)</label>
+          <input id="sb-workspace" type="text" placeholder="nuyouth-ishwari"
+            class="w-full bg-[var(--background)] border border-[var(--border)] rounded-lg px-3 py-2 text-xs sm:text-sm" />
+        </div>
+      </div>
+
+      <div id="sb-status-msg" class="text-xs text-[var(--muted-foreground)]"></div>
+
+      <div class="flex flex-wrap items-center justify-between gap-2 pt-2 border-t border-[var(--card-border)]">
+        <div class="flex gap-2">
+          <button onclick="pullFromCloud(true)" class="px-3 py-2 rounded-lg text-xs font-semibold border border-[var(--border)] cursor-pointer">
+            ⬇️ Pull Cloud
+          </button>
+          <button onclick="pushToCloud(true)" class="px-3 py-2 rounded-lg text-xs font-semibold border border-[var(--border)] cursor-pointer">
+            ⬆️ Push Local
+          </button>
+          <button onclick="disconnectSupabase()" class="px-3 py-2 rounded-lg text-xs text-[var(--muted-foreground)] hover:underline cursor-pointer">
+            Disconnect
+          </button>
+        </div>
+        <button onclick="connectAndSync()" class="px-4 py-2 rounded-lg text-xs font-semibold bg-[var(--primary)] text-[var(--primary-foreground)] cursor-pointer">
+          Connect &amp; Sync
+        </button>
+      </div>
+    </div>
+  </div>
+
   <!-- Toast -->
   <div id="toast" class="fixed bottom-5 right-5 z-50 hidden px-4 py-2.5 rounded-lg text-xs sm:text-sm font-semibold bg-[var(--primary)] text-[var(--primary-foreground)] shadow-lg">
     Copied!
@@ -438,7 +516,6 @@
       { id: 'Face & Glow', label: 'Face Yoga & Feel Younger' }
     ];
 
-    // All 25 topics with 1-to-1 complete silent Shot Guides!
     const TOPICS_DATA = [
       {
         id: 'p1', title: 'Fat Belly vs Posture Belly (10-Sec Wall Test)', pillar: 'Posture', format: 'Short', durationSec: 30,
@@ -452,7 +529,7 @@
           { time: '0:04–0:11', name: 'CLIP 1 — Hip Flexor Stretch', cam: 'Side mat angle', act: 'Kneeling lunge mein hips aage press karein; tight hip par haath se tap karein.', text: '1. Hip Flexor Stretch\n30 Sec Each Side' },
           { time: '0:11–0:18', name: 'CLIP 2 — Glute Bridge', cam: 'Side mat angle', act: 'Pehle lower back mat se chipkayein, phir hips lift karein.', text: '2. Glute Bridge (Pelvic Tuck)\n15 Reps x 2' },
           { time: '0:18–0:25', name: 'CLIP 3 — Dead Bug', cam: 'Side mat angle', act: 'Kamar lock rakh kar ek-ek pair dheere neeche laayein.', text: '3. Dead Bug (No Back Gap!)\n10 Reps Each Side' },
-          { time: '0:25–0:30', name: 'OUTRO — CTA', cam: 'Side profile smiling', act: 'Tall aligned posture mein khade होकर neeche comment ki taraf point karein.', text: 'Do Daily 14 Days 💪\nComment "POSTURE"' }
+          { time: '0:25–0:30', name: 'OUTRO — CTA', cam: 'Side profile smiling', act: 'Tall aligned posture mein khade hokar neeche comment ki taraf point karein.', text: 'Do Daily 14 Days 💪\nComment "POSTURE"' }
         ]
       },
       {
@@ -632,7 +709,7 @@
         comment: 'Kya aapko Thyroid weight & fatigue ke liye 10-min routine chahiye? "YES" likhein 👇',
         steps: [
           { time: '0:00–0:04', name: 'HOOK', cam: 'Close front shot', act: 'Gardan par gentle haath rakh kar 3 fingers dikhayein.', text: 'Thyroid & Low Energy? 🦋\n3 Gentle Neck Poses' },
-          { time: '0:04–0:11', name: 'CLIP 1 — Ustrasana / Supported Chest Lift', cam: 'Side mat shot', act: 'Kneeling mein haath kamar par rakh kar throat halka upar kholein.', text: '1. Gentle Throat Open (20s)' },
+          { time: '0:04–0:11', name: 'CLIP 1 — Supported Chest Lift', cam: 'Side mat shot', act: 'Kneeling mein haath kamar par rakh kar throat halka upar kholein.', text: '1. Gentle Throat Open (20s)' },
           { time: '0:11–0:18', name: 'CLIP 2 — Setu Bandhasana (Bridge)', cam: 'Side mat shot', act: 'Hips lift karein jisse chin chest ke paas aaye (thyroid massage).', text: '2. Bridge Pose (30s x 2)' },
           { time: '0:18–0:25', name: 'CLIP 3 — Matsyasana (Supported Fish)', cam: 'Side mat shot', act: 'Pillow/towel upper back ke neeche rakh kar chest & neck kholein.', text: '3. Supported Fish Pose\nSave for Daily Morning 📌' }
         ]
@@ -792,7 +869,6 @@
       }
     ];
 
-    // 30-Day Calendar rotating all 25 topics cleanly + 5 bonus weekend recaps/lives!
     const CALENDAR_30 = [
       'p1','g1','w1','d1','f1','p5','w6',
       'p2','g2','w2','d2','f2','g5','w6',
@@ -812,11 +888,14 @@
     let topicStatus = {};
     let dayDone = {};
     let checklistState = {};
+    let notesMap = {};
+    let sbConfig = { url: '', key: '', workspace: 'nuyouth-ishwari' };
     let selectedPillar = 'all';
     let activeShotId = 'p1';
     let activeClipIdx = 0;
     let timerSeconds = 30;
     let timerInterval = null;
+    let cloudPushTimer = null;
 
     function loadState() {
       try {
@@ -827,21 +906,217 @@
         topicStatus = JSON.parse(localStorage.getItem('nuyouth_v2_status') || '{}');
         dayDone = JSON.parse(localStorage.getItem('nuyouth_v2_days') || '{}');
         checklistState = JSON.parse(localStorage.getItem('nuyouth_v2_checks') || '{}');
+        notesMap = JSON.parse(localStorage.getItem('nuyouth_v2_notes') || '{}');
         const custom = JSON.parse(localStorage.getItem('nuyouth_v2_custom') || '[]');
         custom.forEach(c => { if (!TOPICS_DATA.find(t => t.id === c.id)) TOPICS_DATA.unshift(c); });
+        const savedSb = JSON.parse(localStorage.getItem('nuyouth_sb_cfg') || 'null');
+        if (savedSb) sbConfig = { ...sbConfig, ...savedSb };
       } catch (e) {}
     }
 
-    function saveState() {
+    function saveLocalState() {
       try {
         localStorage.setItem('nuyouth_v2_status', JSON.stringify(topicStatus));
         localStorage.setItem('nuyouth_v2_days', JSON.stringify(dayDone));
         localStorage.setItem('nuyouth_v2_checks', JSON.stringify(checklistState));
+        localStorage.setItem('nuyouth_v2_notes', JSON.stringify(notesMap));
         const customOnly = TOPICS_DATA.filter(t => String(t.id).startsWith('custom_'));
         localStorage.setItem('nuyouth_v2_custom', JSON.stringify(customOnly));
       } catch (e) {}
     }
 
+    function saveState() {
+      saveLocalState();
+      if (isSupabaseConfigured()) {
+        clearTimeout(cloudPushTimer);
+        setSyncBadge('syncing');
+        cloudPushTimer = setTimeout(() => pushToCloud(false), 700);
+      }
+    }
+
+    // ---------- SUPABASE CLOUD SYNC ----------
+    function isSupabaseConfigured() {
+      return !!(sbConfig.url && sbConfig.key && sbConfig.workspace);
+    }
+
+    function setSyncBadge(mode) {
+      const btn = document.getElementById('sync-btn');
+      if (mode === 'synced') {
+        btn.textContent = '☁️ Synced';
+        btn.className = 'px-3 py-2 rounded-lg text-xs font-semibold border border-[var(--success)] text-[var(--success)] bg-[var(--background)] cursor-pointer';
+      } else if (mode === 'syncing') {
+        btn.textContent = '⏳ Syncing...';
+        btn.className = 'px-3 py-2 rounded-lg text-xs font-semibold border border-[var(--warning)] text-[var(--warning)] bg-[var(--background)] cursor-pointer';
+      } else if (mode === 'error') {
+        btn.textContent = '⚠️ Sync Error';
+        btn.className = 'px-3 py-2 rounded-lg text-xs font-semibold border border-[var(--warning)] text-[var(--warning)] bg-[var(--background)] cursor-pointer';
+      } else {
+        btn.textContent = '☁️ Connect Supabase';
+        btn.className = 'px-3 py-2 rounded-lg text-xs font-semibold border border-[var(--border)] bg-[var(--background)] hover:border-[var(--primary)] cursor-pointer';
+      }
+    }
+
+    function openSyncModal() {
+      document.getElementById('sb-url').value = sbConfig.url || '';
+      document.getElementById('sb-key').value = sbConfig.key || '';
+      document.getElementById('sb-workspace').value = sbConfig.workspace || 'nuyouth-ishwari';
+      document.getElementById('sb-status-msg').textContent = isSupabaseConfigured()
+        ? 'Connected to: ' + sbConfig.url + ' (Workspace: ' + sbConfig.workspace + ')'
+        : 'Abhi local storage use ho raha hai. Details daal kar Connect karein.';
+      document.getElementById('sync-modal').classList.remove('hidden');
+    }
+
+    function closeSyncModal() {
+      document.getElementById('sync-modal').classList.add('hidden');
+    }
+
+    function copySupabaseSQL() {
+      const sql = `CREATE TABLE IF NOT EXISTS public.nuyouth_workspace (
+  workspace_key TEXT PRIMARY KEY,
+  topic_status JSONB NOT NULL DEFAULT '{}'::jsonb,
+  day_done JSONB NOT NULL DEFAULT '{}'::jsonb,
+  checklist_state JSONB NOT NULL DEFAULT '{}'::jsonb,
+  custom_topics JSONB NOT NULL DEFAULT '[]'::jsonb,
+  notes JSONB NOT NULL DEFAULT '{}'::jsonb,
+  updated_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
+);
+ALTER TABLE public.nuyouth_workspace ENABLE ROW LEVEL SECURITY;
+DROP POLICY IF EXISTS "Allow public workspace access" ON public.nuyouth_workspace;
+CREATE POLICY "Allow public workspace access" ON public.nuyouth_workspace
+  FOR ALL TO anon, authenticated USING (true) WITH CHECK (true);`;
+      copyText(sql, 'Supabase SQL Copied!');
+    }
+
+    function readModalConfig() {
+      sbConfig = {
+        url: document.getElementById('sb-url').value.trim().replace(/\/+$/, ''),
+        key: document.getElementById('sb-key').value.trim(),
+        workspace: document.getElementById('sb-workspace').value.trim() || 'nuyouth-ishwari'
+      };
+      try { localStorage.setItem('nuyouth_sb_cfg', JSON.stringify(sbConfig)); } catch (e) {}
+    }
+
+    async function connectAndSync() {
+      readModalConfig();
+      if (!isSupabaseConfigured()) {
+        document.getElementById('sb-status-msg').textContent = '❌ Project URL, Anon Key aur Sync Code teeno bharein.';
+        return;
+      }
+      document.getElementById('sb-status-msg').textContent = '⏳ Connecting to Supabase...';
+      setSyncBadge('syncing');
+      try {
+        const res = await fetch(`${sbConfig.url}/rest/v1/nuyouth_workspace?workspace_key=eq.${encodeURIComponent(sbConfig.workspace)}&select=*`, {
+          headers: { 'apikey': sbConfig.key, 'Authorization': `Bearer ${sbConfig.key}` }
+        });
+        if (!res.ok) throw new Error('HTTP ' + res.status + ' (Check URL, Key, ya SQL run hua hai ya nahi)');
+        const rows = await res.json();
+        if (rows.length > 0) {
+          applyCloudRow(rows[0]);
+          document.getElementById('sb-status-msg').textContent = '✅ Connected! Cloud data load ho gaya.';
+          showToast('☁️ Cloud Data Loaded!');
+        } else {
+          await pushToCloud(false);
+          document.getElementById('sb-status-msg').textContent = '✅ Connected! Naya workspace cloud mein save ho gaya.';
+          showToast('☁️ Connected & Saved!');
+        }
+        setSyncBadge('synced');
+      } catch (err) {
+        setSyncBadge('error');
+        document.getElementById('sb-status-msg').textContent = '❌ Connection failed: ' + err.message;
+      }
+    }
+
+    function applyCloudRow(row) {
+      topicStatus = row.topic_status || {};
+      dayDone = row.day_done || {};
+      checklistState = row.checklist_state || {};
+      notesMap = row.notes || {};
+      const custom = Array.isArray(row.custom_topics) ? row.custom_topics : [];
+      custom.forEach(c => { if (!TOPICS_DATA.find(t => t.id === c.id)) TOPICS_DATA.unshift(c); });
+      saveLocalState();
+      updateStats();
+      render30DayCalendar();
+      renderIdeas();
+      renderShotList();
+      renderActiveShot();
+      renderChecklist();
+    }
+
+    async function pullFromCloud(interactive) {
+      if (interactive) readModalConfig();
+      if (!isSupabaseConfigured()) return showToast('Pehle Supabase details daalein');
+      setSyncBadge('syncing');
+      try {
+        const res = await fetch(`${sbConfig.url}/rest/v1/nuyouth_workspace?workspace_key=eq.${encodeURIComponent(sbConfig.workspace)}&select=*`, {
+          headers: { 'apikey': sbConfig.key, 'Authorization': `Bearer ${sbConfig.key}` }
+        });
+        if (!res.ok) throw new Error('HTTP ' + res.status);
+        const rows = await res.json();
+        if (rows.length > 0) {
+          applyCloudRow(rows[0]);
+          setSyncBadge('synced');
+          if (interactive) {
+            document.getElementById('sb-status-msg').textContent = '✅ Cloud se latest data pull ho gaya.';
+            showToast('⬇️ Pulled from Cloud!');
+          }
+        } else {
+          setSyncBadge('synced');
+          if (interactive) document.getElementById('sb-status-msg').textContent = 'ℹ️ Cloud mein abhi koi saved data nahi mila.';
+        }
+      } catch (err) {
+        setSyncBadge('error');
+        if (interactive) document.getElementById('sb-status-msg').textContent = '❌ Pull failed: ' + err.message;
+      }
+    }
+
+    async function pushToCloud(interactive) {
+      if (interactive) readModalConfig();
+      if (!isSupabaseConfigured()) return showToast('Pehle Supabase details daalein');
+      setSyncBadge('syncing');
+      const customOnly = TOPICS_DATA.filter(t => String(t.id).startsWith('custom_'));
+      const payload = {
+        workspace_key: sbConfig.workspace,
+        topic_status: topicStatus,
+        day_done: dayDone,
+        checklist_state: checklistState,
+        custom_topics: customOnly,
+        notes: notesMap,
+        updated_at: new Date().toISOString()
+      };
+      try {
+        const res = await fetch(`${sbConfig.url}/rest/v1/nuyouth_workspace?on_conflict=workspace_key`, {
+          method: 'POST',
+          headers: {
+            'apikey': sbConfig.key,
+            'Authorization': `Bearer ${sbConfig.key}`,
+            'Content-Type': 'application/json',
+            'Prefer': 'resolution=merge-duplicates,return=minimal'
+          },
+          body: JSON.stringify(payload)
+        });
+        if (!res.ok) throw new Error('HTTP ' + res.status);
+        setSyncBadge('synced');
+        if (interactive) {
+          document.getElementById('sb-status-msg').textContent = '✅ Local data cloud par push ho gaya.';
+          showToast('⬆️ Pushed to Cloud!');
+        }
+      } catch (err) {
+        setSyncBadge('error');
+        if (interactive) document.getElementById('sb-status-msg').textContent = '❌ Push failed: ' + err.message;
+      }
+    }
+
+    function disconnectSupabase() {
+      sbConfig = { url: '', key: '', workspace: 'nuyouth-ishwari' };
+      try { localStorage.removeItem('nuyouth_sb_cfg'); } catch (e) {}
+      document.getElementById('sb-url').value = '';
+      document.getElementById('sb-key').value = '';
+      setSyncBadge('idle');
+      document.getElementById('sb-status-msg').textContent = 'Disconnected. Data ab sirf is device par save hoga.';
+      showToast('Disconnected');
+    }
+
+    // ---------- THEME & UI ----------
     function toggleTheme() {
       const isDark = document.documentElement.classList.toggle('dark');
       document.getElementById('theme-btn').textContent = isDark ? '☀️ Light' : '🌙 Dark';
@@ -985,12 +1260,19 @@
       renderActiveShot();
     }
 
+    function saveCurrentNote(val) {
+      notesMap[activeShotId] = val;
+      document.getElementById('note-saved-hint').textContent = isSupabaseConfigured() ? 'Syncing...' : 'Saved locally';
+      saveState();
+    }
+
     function renderActiveShot() {
       const s = TOPICS_DATA.find(x => x.id === activeShotId) || TOPICS_DATA[0];
       document.getElementById('active-shot-pillar').textContent = s.pillar;
       document.getElementById('active-shot-format').textContent = s.format + ' · ' + s.durationSec + 's';
       document.getElementById('active-shot-music').textContent = s.music;
       document.getElementById('active-shot-title').textContent = s.title;
+      document.getElementById('topic-note').value = notesMap[s.id] || '';
 
       resetTimer(s.durationSec || 25);
 
@@ -1024,7 +1306,6 @@
         `;
       }).join('');
 
-      // Update 9:16 Safe-Zone Preview
       const activeStep = steps[activeClipIdx] || steps[0];
       if (activeStep) {
         document.getElementById('preview-clip-badge').textContent = activeStep.name.split('—')[0].trim();
@@ -1071,7 +1352,6 @@
       renderChecklist();
     }
 
-    // Timer
     function updateTimerUI() {
       const m = String(Math.floor(timerSeconds / 60)).padStart(2, '0');
       const s = String(timerSeconds % 60).padStart(2, '0');
@@ -1221,7 +1501,6 @@
       showToast('Naya topic + Shot Guide add ho gaya!');
     }
 
-    // ---------- VISUAL HOOK BUILDER ----------
     function generateHooks() {
       const key = document.getElementById('hook-topic').value;
       const custom = document.getElementById('hook-custom').value.trim();
@@ -1264,7 +1543,6 @@
       `).join('');
     }
 
-    // ---------- INIT ----------
     loadState();
     document.getElementById('search-input').addEventListener('input', renderIdeas);
     document.getElementById('filter-format').addEventListener('change', renderIdeas);
@@ -1279,6 +1557,12 @@
     renderActiveShot();
     renderChecklist();
     generateHooks();
+
+    if (isSupabaseConfigured()) {
+      pullFromCloud(false);
+    } else {
+      setSyncBadge('idle');
+    }
   </script>
 </body>
 </html>
